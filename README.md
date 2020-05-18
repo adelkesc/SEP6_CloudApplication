@@ -1,5 +1,5 @@
 # SEP6 Project Formulation 
-<br />**Deadline for hand-in:** June 4th, 2020 at 13:00 (hand in on Wiseflow) 
+**Deadline for hand-in:** June 4th, 2020 at 13:00 (hand in on Wiseflow) 
 <br />**Groups:** You must be using your BPR1 groups for this project (if this is not possible, you must form a group of 2-4 students). <br />**Evaluation:** The project is assessed solely on the written project which is assessed as either approved/not-approved. The evaluation is part of the overall evaluation of SEP6. Please see the course description for information about the other parts. 
  
 ## **Purpose** 
