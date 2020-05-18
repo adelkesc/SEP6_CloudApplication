@@ -1,0 +1,70 @@
+﻿@page "/flights"
+
+@using DataAccessLibrary
+@using DataAccessLibrary.Models
+
+@inject IFlightData _db
+
+<h3>Flights</h3>
+
+@if (flights is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Month</th>
+                <th>Day</th>
+                <th>Departure Time</th>
+                <th>Departure Delay</th>
+                <th>Arrival Time</th>
+                <th>Arrival Delay</th>
+                <th>Carrier</th>
+                <th>Tail Number</th>
+                <th>Flight</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Air Time</th>
+                <th>Distance</th>
+                <th>Hour</th>
+                <th>Minute</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var flight in flights)
+            {
+            <tr>
+                <td>@flight.Year</td>
+                <td>@flight.Month</td>
+                <td>@flight.Day</td>
+                <td>@flight.Dep_time</td>
+                <td>@flight.Dep_delay</td>
+                <td>@flight.Air_time</td>
+                <td>@flight.Arr_delay</td>
+                <td>@flight.Carrier</td>
+                <td>@flight.Tailnum</td>
+                <td>@flight.Flight</td>
+                <td>@flight.Origin</td>
+                <td>@flight.Dest</td>
+                <td>@flight.Air_time</td>
+                <td>@flight.Distance</td>
+                <td>@flight.Hour</td>
+                <td>@flight.Minute</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<FlightModel> flights;
+
+    protected override async Task OnInitializedAsync()
+    {
+        flights = await _db.GetFlights();
+    }
+}
