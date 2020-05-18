@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "nNu5eAyKz7qn9jEheR7/KY5VJ3Fd3EwhmXOdktios7jtDdz6ReaiZ4w5ruMyxsQjrnvJx3VofP3rTRzkZMenag==",
+  "dgSpecHash": "Xt+gjofXvP4lTNxm6kmQPSiOYZvX/ObTxbpE+vVcY4duWmGxkwFouAc8An7yUXoiVh7qx5jCX/F5fMVOLCMcZg==",
   "success": true,
   "projectFilePath": "D:\\Code\\SEP6_CloudApplication\\SEP6\\SEP6.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mihail\\.nuget\\packages\\dapper\\2.0.35\\dapper.2.0.35.nupkg.sha512",
+    "C:\\Users\\Mihail\\.nuget\\packages\\google.api.commonprotos\\2.0.0\\google.api.commonprotos.2.0.0.nupkg.sha512",
+    "C:\\Users\\Mihail\\.nuget\\packages\\google.cloud.devtools.common\\2.0.0\\google.cloud.devtools.common.2.0.0.nupkg.sha512",
+    "C:\\Users\\Mihail\\.nuget\\packages\\google.protobuf\\3.11.4\\google.protobuf.3.11.4.nupkg.sha512",
     "C:\\Users\\Mihail\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Mihail\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\Mihail\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.0\\microsoft.aspnetcore.razor.language.3.1.0.nupkg.sha512",

@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "a9hz18tpwDC1wFBPEmV0lyNBWNXeVeHIR4ANde6/cQP2vtMtiWcsNy7yABrZSdEH0G2VUEHh641DzTGqeDomvg==",
+  "dgSpecHash": "fcszD1J2TK+Etrxwx+AwsOpYCSOZO86wAfwE9gTNEfntdKGmxtm5RPVwp1JZr74MZDMKaImw3j/vBxxp8Im+kQ==",
   "success": true,
   "projectFilePath": "D:\\Code\\SEP6_CloudApplication\\SEP6\\DataAccessLibrary\\DataAccessLibrary\\DataAccessLibrary.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mihail\\.nuget\\packages\\dapper\\2.0.35\\dapper.2.0.35.nupkg.sha512",
+    "C:\\Users\\Mihail\\.nuget\\packages\\google.api.commonprotos\\2.0.0\\google.api.commonprotos.2.0.0.nupkg.sha512",
+    "C:\\Users\\Mihail\\.nuget\\packages\\google.cloud.devtools.common\\2.0.0\\google.cloud.devtools.common.2.0.0.nupkg.sha512",
+    "C:\\Users\\Mihail\\.nuget\\packages\\google.protobuf\\3.11.4\\google.protobuf.3.11.4.nupkg.sha512",
     "C:\\Users\\Mihail\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.0.0\\microsoft.bcl.asyncinterfaces.1.0.0.nupkg.sha512",
     "C:\\Users\\Mihail\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.1.4\\microsoft.extensions.configuration.abstractions.3.1.4.nupkg.sha512",
     "C:\\Users\\Mihail\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.4\\microsoft.extensions.primitives.3.1.4.nupkg.sha512",

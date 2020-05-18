@@ -45,6 +45,10 @@
               "target": "Package",
               "version": "[2.0.35, )"
             },
+            "Google.Cloud.DevTools.Common": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",
               "version": "[3.1.4, )"
