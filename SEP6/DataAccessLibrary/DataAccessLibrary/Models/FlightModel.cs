@@ -9,7 +9,9 @@ namespace DataAccessLibrary.Models
 
         public string Year { get; set; }
 
-        public string Month { get; set; }
+        public int Month { get; set; }
+
+        public int Count { get; set; }
 
         public string Day { get; set; }
 
