@@ -3,8 +3,7 @@
 @using DataAccessLibrary
 @using DataAccessLibrary.Models
 
-@inject IFlightData _db
-
+@inject IFlightData fd
 <h3>Flights</h3>
 
 @if (flights is null)
@@ -65,6 +64,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        flights = await _db.GetFlights();
+        flights = await fd.GetFlightsAsync();
     }
 }

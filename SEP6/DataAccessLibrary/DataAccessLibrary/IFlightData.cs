@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary
 {
-    interface IFlightData
+    public interface IFlightData
     {
-        Task<List<FlightModel>> GetFlights();
+        Task<List<FlightModel>> GetFlightsAsync();
     }
 }

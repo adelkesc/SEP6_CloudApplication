@@ -32,6 +32,8 @@ namespace SEP6
             services.AddSingleton<WeatherForecastService>();
             services.AddTransient<ISqlDataAccess, SqlDataAccess>();
             services.AddTransient<IFlightData, FlightData>();
+
+            services.AddSingleton<IFlightData, FlightData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

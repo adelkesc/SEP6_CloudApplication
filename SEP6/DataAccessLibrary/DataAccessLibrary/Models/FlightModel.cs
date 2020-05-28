@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataAccessLibrary.Models
 {
-    class FlightModel
+    public class FlightModel
     {
 
         public string Year { get; set; }

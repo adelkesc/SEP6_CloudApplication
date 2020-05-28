@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary
 {
-    interface ISqlDataAccess
+    public interface ISqlDataAccess
     {
         string ConnectionString { get; set; }
 

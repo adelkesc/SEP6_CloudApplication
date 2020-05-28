@@ -6,3 +6,4 @@ D:\Code\SEP6_CloudApplication\SEP6\DataAccessLibrary\DataAccessLibrary\bin\Debug
 D:\Code\SEP6_CloudApplication\SEP6\DataAccessLibrary\DataAccessLibrary\obj\Debug\netstandard2.0\DataAccessLibrary.dll
 D:\Code\SEP6_CloudApplication\SEP6\DataAccessLibrary\DataAccessLibrary\obj\Debug\netstandard2.0\DataAccessLibrary.pdb
 D:\Code\SEP6_CloudApplication\SEP6\DataAccessLibrary\DataAccessLibrary\obj\Debug\netstandard2.0\DataAccessLibrary.csprojAssemblyReference.cache
+D:\Code\SEP6_CloudApplication\SEP6\DataAccessLibrary\DataAccessLibrary\obj\Debug\netstandard2.0\DataAccessLibrary.csproj.CoreCompileInputs.cache
