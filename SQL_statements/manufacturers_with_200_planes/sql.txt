@@ -1,0 +1,5 @@
+SELECT manufacturer, COUNT(tailnum)
+FROM planes
+GROUP BY manufacturer
+HAVING COUNT(tailnum)>200
+ORDER BY COUNT(tailnum) DESC;

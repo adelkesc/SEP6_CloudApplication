@@ -1,0 +1,4 @@
+SELECT COUNT(flight), month, year, origin
+FROM flights
+GROUP BY month, year, origin
+ORDER BY year ASC;

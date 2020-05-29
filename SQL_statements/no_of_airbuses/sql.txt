@@ -1,0 +1,4 @@
+SELECT manufacturer, COUNT(tailnum)
+FROM planes
+WHERE manufacturer = 'AIRBUS INDUSTRIE' OR manufacturer = 'AIRBUS'
+GROUP BY manufacturer;

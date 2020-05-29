@@ -1,0 +1,4 @@
+SELECT origin, year, month, day, (AVG(temp)-32)*5/9 AS avg_Celcius
+FROM weather
+WHERE origin = 'JFK'
+GROUP BY origin, year, month, day;

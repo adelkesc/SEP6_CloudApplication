@@ -1,0 +1,3 @@
+SELECT origin, AVG(arr_delay) AS avg_delay, AVG(dep_delay) as avg_dep
+FROM flights
+GROUP BY origin;

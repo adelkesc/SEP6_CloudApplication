@@ -1,0 +1,8 @@
+SELECT planes.manufacturer, COUNT(flight)
+FROM planes, flights
+WHERE planes.tailnum=flights.tailnum
+GROUP BY manufacturer
+HAVING COUNT(planes.tailnum)>200
+ORDER BY COUNT(flight) DESC;
+
+//I am not convinced this is correct

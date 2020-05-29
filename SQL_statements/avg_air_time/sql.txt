@@ -1,0 +1,3 @@
+SELECT AVG(air_time), origin
+FROM flights
+GROUP BY origin;

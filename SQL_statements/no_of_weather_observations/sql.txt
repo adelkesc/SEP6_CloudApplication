@@ -1,0 +1,4 @@
+SELECT origin, COUNT(temp)
+FROM weather
+GROUP BY origin
+ORDER BY COUNT(temp) ASC;

@@ -1,0 +1,5 @@
+SELECT COUNT(flight), dest
+FROM flights
+GROUP BY dest
+ORDER BY COUNT(flight) DESC
+LIMIT 10;
