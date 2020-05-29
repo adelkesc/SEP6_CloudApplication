@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HFZHtXc2I5fNg6JgWWdv47mbN/AfFtdX2KrICUzXEfePMj7XWTos3SPOzdq9I4PNU0jbNnZXxeUqnUQCeqcgQA==",
+  "dgSpecHash": "jq/vsoNh4S64TA06uLhpZTsFwWKXuWDb0NSM2k4sPQdOV63sd50SbRGwXw6ox4zjEg2Xyev9/stTzrCZWHjQBg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\adand\\Documents\\Visual Studio 2019\\BlazorAppTutorial\\BlazorAppTutorial.csproj",
+  "projectFilePath": "C:\\Users\\adand\\Documents\\6th_semester_2020\\SEP6\\SEP6Project\\ProjectVC\\BlazorChartsTestProj\\BlazorAppTutorial\\BlazorAppTutorial.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\adand\\.nuget\\packages\\chartjs.blazor\\1.1.0\\chartjs.blazor.1.1.0.nupkg.sha512",
     "C:\\Users\\adand\\.nuget\\packages\\microsoft.aspnetcore.authorization\\3.1.0\\microsoft.aspnetcore.authorization.3.1.0.nupkg.sha512",

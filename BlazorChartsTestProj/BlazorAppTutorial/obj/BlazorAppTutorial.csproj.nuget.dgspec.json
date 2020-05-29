@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\adand\\Documents\\Visual Studio 2019\\BlazorAppTutorial\\BlazorAppTutorial.csproj": {}
+    "C:\\Users\\adand\\Documents\\6th_semester_2020\\SEP6\\SEP6Project\\ProjectVC\\BlazorChartsTestProj\\BlazorAppTutorial\\BlazorAppTutorial.csproj": {}
   },
   "projects": {
-    "C:\\Users\\adand\\Documents\\Visual Studio 2019\\BlazorAppTutorial\\BlazorAppTutorial.csproj": {
+    "C:\\Users\\adand\\Documents\\6th_semester_2020\\SEP6\\SEP6Project\\ProjectVC\\BlazorChartsTestProj\\BlazorAppTutorial\\BlazorAppTutorial.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\adand\\Documents\\Visual Studio 2019\\BlazorAppTutorial\\BlazorAppTutorial.csproj",
+        "projectUniqueName": "C:\\Users\\adand\\Documents\\6th_semester_2020\\SEP6\\SEP6Project\\ProjectVC\\BlazorChartsTestProj\\BlazorAppTutorial\\BlazorAppTutorial.csproj",
         "projectName": "BlazorAppTutorial",
-        "projectPath": "C:\\Users\\adand\\Documents\\Visual Studio 2019\\BlazorAppTutorial\\BlazorAppTutorial.csproj",
+        "projectPath": "C:\\Users\\adand\\Documents\\6th_semester_2020\\SEP6\\SEP6Project\\ProjectVC\\BlazorChartsTestProj\\BlazorAppTutorial\\BlazorAppTutorial.csproj",
         "packagesPath": "C:\\Users\\adand\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\adand\\Documents\\Visual Studio 2019\\BlazorAppTutorial\\obj\\",
+        "outputPath": "C:\\Users\\adand\\Documents\\6th_semester_2020\\SEP6\\SEP6Project\\ProjectVC\\BlazorChartsTestProj\\BlazorAppTutorial\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\adand\\AppData\\Roaming\\NuGet\\NuGet.Config",
