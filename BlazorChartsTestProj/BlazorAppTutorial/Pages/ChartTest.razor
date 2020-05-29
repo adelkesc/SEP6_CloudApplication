@@ -5,10 +5,13 @@
 @using ChartJs.Blazor.ChartJS.Common.Properties
 @using ChartJs.Blazor.Util
 
+
 <h3>ChartTest</h3>
 <p>This is a test pie chart for Chartjs.Blazor.</p>
+<p>To see another chart visit <a href="/fetchdata">this link</a>.</p>
 
 <ChartJsPieChart @ref="_pieChartJs" Config="@_config" Width="600" Height="300" />
+
 
 @code {
     private PieConfig _config;
@@ -49,4 +52,5 @@
         pieSet.Data.AddRange(new double[] { 4, 5, 6, 7 });
         _config.Data.Datasets.Add(pieSet);
     }
+
 }
