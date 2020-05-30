@@ -6,6 +6,7 @@ namespace DataAccessLibrary
 {
     public interface IModel
     {
+        string[] MonthNames();
         Task<List<FlightModel>> NoFlightsPerMonthAsync();
 
         Task<List<FlightModel>> NoFlightsPerMonthPerOriginAsync();
