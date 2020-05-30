@@ -3,7 +3,6 @@ D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\SEP6.RazorComponent.i
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\App.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Counter.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Error.razor.g.cs
-D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\FetchData.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Index.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\MainLayout.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\NavMenu.razor.g.cs
@@ -131,7 +130,6 @@ D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\SEP6
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\App.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\Counter.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\Error.razor.g.cs
-D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\FetchData.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\Flights.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\Index.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Shared\MainLayout.razor.g.cs
@@ -294,3 +292,15 @@ C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\obj\D
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\MeanAirTravel.razor.g.cs
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\CheckTemperature.razor.g.cs
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\CheckTemperature.razor.g.cs
+D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\CheckTemperature.razor.g.cs
+D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\CheckWeather.razor.g.cs
+D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\ManufacturerPlanes.razor.g.cs
+D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\MeanAirTravel.razor.g.cs
+D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\TopDestinations.razor.g.cs
+D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\TotalFlights.razor.g.cs
+D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\CheckTemperature.razor.g.cs
+D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\CheckWeather.razor.g.cs
+D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\ManufacturerPlanes.razor.g.cs
+D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\MeanAirTravel.razor.g.cs
+D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\TopDestinations.razor.g.cs
+D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\TotalFlights.razor.g.cs
