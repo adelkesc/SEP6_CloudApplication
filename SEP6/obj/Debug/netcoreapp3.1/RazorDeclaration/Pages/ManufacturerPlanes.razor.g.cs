@@ -83,34 +83,6 @@ using ChartJs.Blazor;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 14 "D:\Code\SEP6_CloudApplication\SEP6\_Imports.razor"
-using ChartJs.Blazor.Charts;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 15 "D:\Code\SEP6_CloudApplication\SEP6\_Imports.razor"
-using ChartJs.Blazor.ChartJS.PieChart;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 16 "D:\Code\SEP6_CloudApplication\SEP6\_Imports.razor"
-using ChartJs.Blazor.ChartJS.Common.Properties;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 17 "D:\Code\SEP6_CloudApplication\SEP6\_Imports.razor"
-using ChartJs.Blazor.Util;
-
-#line default
-#line hidden
-#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/manufacturerplanes")]
     public partial class ManufacturerPlanes : Microsoft.AspNetCore.Components.ComponentBase
     {
