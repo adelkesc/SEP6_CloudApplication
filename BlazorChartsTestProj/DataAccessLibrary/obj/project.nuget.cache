@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "DAAQFjEHPBinGVCCa11xUe6NSjj+SILkGqQ1hLNEQE+fs7AnoruqRAr2CcVQtuIFRbLnZRN6rhFGMk7Fj3bSnQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\adand\\Documents\\6th_semester_2020\\SEP6\\SEP6Project\\ProjectVC\\BlazorChartsTestProj\\DataAccessLibrary\\DataAccessLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\adand\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\adand\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

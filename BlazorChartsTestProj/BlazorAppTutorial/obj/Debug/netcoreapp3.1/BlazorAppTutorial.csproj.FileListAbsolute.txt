@@ -78,7 +78,6 @@ C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\BlazorChar
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\BlazorChartsTestProj\BlazorAppTutorial\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\ChartTest.razor.g.cs
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\BlazorChartsTestProj\BlazorAppTutorial\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Counter.razor.g.cs
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\BlazorChartsTestProj\BlazorAppTutorial\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Error.razor.g.cs
-C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\BlazorChartsTestProj\BlazorAppTutorial\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\FetchData.razor.g.cs
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\BlazorChartsTestProj\BlazorAppTutorial\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Index.razor.g.cs
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\BlazorChartsTestProj\BlazorAppTutorial\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\MainLayout.razor.g.cs
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\BlazorChartsTestProj\BlazorAppTutorial\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\NavMenu.razor.g.cs
@@ -92,7 +91,6 @@ C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\BlazorChar
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\BlazorChartsTestProj\BlazorAppTutorial\obj\Debug\netcoreapp3.1\Razor\Pages\ChartTest.razor.g.cs
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\BlazorChartsTestProj\BlazorAppTutorial\obj\Debug\netcoreapp3.1\Razor\Pages\Counter.razor.g.cs
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\BlazorChartsTestProj\BlazorAppTutorial\obj\Debug\netcoreapp3.1\Razor\Pages\Error.razor.g.cs
-C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\BlazorChartsTestProj\BlazorAppTutorial\obj\Debug\netcoreapp3.1\Razor\Pages\FetchData.razor.g.cs
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\BlazorChartsTestProj\BlazorAppTutorial\obj\Debug\netcoreapp3.1\Razor\Pages\Index.razor.g.cs
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\BlazorChartsTestProj\BlazorAppTutorial\obj\Debug\netcoreapp3.1\Razor\Shared\MainLayout.razor.g.cs
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\BlazorChartsTestProj\BlazorAppTutorial\obj\Debug\netcoreapp3.1\Razor\Shared\NavMenu.razor.g.cs

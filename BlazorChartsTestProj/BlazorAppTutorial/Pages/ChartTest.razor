@@ -5,6 +5,13 @@
 @using ChartJs.Blazor.ChartJS.Common.Properties
 @using ChartJs.Blazor.Util
 
+@using ChartJs.Blazor.ChartJS.BarChart
+@using ChartJs.Blazor.ChartJS.BarChart.Axes
+@using ChartJs.Blazor.ChartJS.Common.Axes
+@using ChartJs.Blazor.ChartJS.Common.Axes.Ticks
+@using ChartJs.Blazor.ChartJS.Common.Enums
+@using ChartJs.Blazor.ChartJS.Common.Wrappers
+
 
 <h3>ChartTest</h3>
 <p>This is a test pie chart for Chartjs.Blazor.</p>
@@ -12,10 +19,16 @@
 
 <ChartJsPieChart @ref="_pieChartJs" Config="@_config" Width="600" Height="300" />
 
+<ChartJsBarChart @ref="_barChart" Config="@_barChartConfig" Width="600" Height="300" />
+
 
 @code {
     private PieConfig _config;
     private ChartJsPieChart _pieChartJs;
+
+    private BarConfig _barChartConfig;
+    private ChartJsBarChart _barChart;
+    private BarDataset<DoubleWrapper> _barDataSet;
 
     protected override void OnInitialized()
     {
@@ -35,8 +48,42 @@
                     AnimateScale = true
                 }
             }
-        };
 
+        };
+        //bar
+        _barChartConfig = new BarConfig
+        {
+            Options = new BarOptions
+            {
+                Title = new OptionsTitle
+                {
+                    Display = true,
+                    Text = "Simple Bar Chart"
+                },
+                Scales = new BarScales
+                {
+                    XAxes = new List<CartesianAxis>
+                {
+                        new BarCategoryAxis
+                        {
+                            BarPercentage = 0.5,
+                            BarThickness = BarThickness.Flex
+                        }
+                    },
+                    YAxes = new List<CartesianAxis>
+                {
+                        new BarLinearCartesianAxis
+                        {
+                            Ticks = new LinearCartesianTicks
+                            {
+                                BeginAtZero = true
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        //bar
         _config.Data.Labels.AddRange(new[] { "A", "B", "C", "D" });
 
         var pieSet = new PieDataset
@@ -51,6 +98,25 @@
 
         pieSet.Data.AddRange(new double[] { 4, 5, 6, 7 });
         _config.Data.Datasets.Add(pieSet);
+
+        _barChartConfig.Data.Labels.AddRange(new[] { "A", "B", "C", "D" });
+
+        _barDataSet = new BarDataset<DoubleWrapper>
+        {
+            Label = "My double dataset",
+            BackgroundColor = new[] { ColorUtil.RandomColorString(), ColorUtil.RandomColorString(), ColorUtil.RandomColorString(), ColorUtil.RandomColorString() },
+            BorderWidth = 0,
+            HoverBackgroundColor = ColorUtil.RandomColorString(),
+            HoverBorderColor = ColorUtil.RandomColorString(),
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff"
+        };
+
+        _barDataSet.AddRange(new DoubleWrapper[] { 8, 5, 3, 7 });
+        _barChartConfig.Data.Datasets.Add(_barDataSet);
     }
+
+
+}
 
 }
