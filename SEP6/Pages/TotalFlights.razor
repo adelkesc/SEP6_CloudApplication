@@ -7,11 +7,22 @@
 @using ChartJs.Blazor.ChartJS.Common.Properties
 @using ChartJs.Blazor.Charts
 @using ChartJs.Blazor.Util
+@using DataAccessLibrary
+@using DataAccessLibrary.Models
+@using ChartJs.Blazor.ChartJS.Common.Wrappers
+
+@inject IModel model;
 
 <h3>Total Flights per Month</h3>
 
+<div class="row">
+    <button class="btn btn-primary" @onclick="AddData">Add Data</button>
+</div>
+<ChartJsBarChart @ref="_barChart"
+                 Config="@_barChartConfig"
+                 Width="600"
+                 Height="300" />
 
-<ChartJsBarChart @ref="_barChart" Config="@_barChartConfig" Width="600" Height="300" />
 <p>A graph will be here soon!</p>
 
 <button type="button">
@@ -24,7 +35,8 @@
 @code {
     private BarConfig _barChartConfig;
     private ChartJsBarChart _barChart;
-    private BarDataset<double> _barDataSet;
+    private List<FlightModel> flights;
+    private BarDataset<Int32Wrapper> _barDataSet;
 
     private List<FlightModel> flights;
     private string[] months;
@@ -46,7 +58,7 @@
                 Scales = new BarScales
                 {
                     XAxes = new List<CartesianAxis>
-                    {
+        {
                         new LinearCartesianAxis
                         {
                             Ticks = new LinearCartesianTicks
@@ -59,22 +71,4 @@
                 }
             }
         };
-        // new
-        months = model.MonthNames();
-        _barChartConfig.Data.Labels.AddRange(months);
-
-        //Note the constructor argument
-        _barDataSet = new BarDataset<double>(horizontal: true)
-        {
-            Label = "My double dataset",
-            BackgroundColor = new[] { ColorUtil.RandomColorString(), ColorUtil.RandomColorString(), ColorUtil.RandomColorString(), ColorUtil.RandomColorString() },
-            BorderColor = ColorUtil.RandomColorString(),
-            BorderWidth = 1
-        };
-
-        _barDataSet.AddRange(new double[] { 8, 5, 3, 7 });
-        _barChartConfig.Data.Datasets.Add(_barDataSet);
-
-        return Task.CompletedTask;
-    }
     }

@@ -317,3 +317,4 @@ C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\bin\D
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\bin\Debug\netcoreapp3.1\Blazor.Extensions.Canvas.JS.dll
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\bin\Debug\netcoreapp3.1\Blazor.Extensions.Canvas.dll
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\bin\Debug\netcoreapp3.1\ChartJs.Blazor.dll
+D:\Code\SEP6_CloudApplication\SEP6\bin\Debug\netcoreapp3.1\AWSSDK.dll

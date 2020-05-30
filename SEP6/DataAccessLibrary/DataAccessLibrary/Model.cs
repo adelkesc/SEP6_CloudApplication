@@ -42,6 +42,13 @@ namespace DataAccessLibrary
                 string sql = "SELECT month, count(month) FROM public.flights GROUP BY month ORDER BY month ASC;";
                 
                 var data =  await _db.LoadData<FlightModel, dynamic>(sql, new { });
+                int index = 0;
+                string[] monthnames = MonthNames();
+                foreach (var flight in flightsPerMonth)
+                {
+                    flight.MonthName = monthnames[index];
+                    index++;
+                }
 
                 flightsPerMonth = data;
             }

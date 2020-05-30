@@ -83,6 +83,69 @@ using ChartJs.Blazor;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 13 "D:\Code\SEP6_CloudApplication\SEP6\_Imports.razor"
+using ChartJs.Blazor.ChartJS.BarChart;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "D:\Code\SEP6_CloudApplication\SEP6\_Imports.razor"
+using ChartJs.Blazor.ChartJS.Common.Axes;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "D:\Code\SEP6_CloudApplication\SEP6\_Imports.razor"
+using ChartJs.Blazor.ChartJS.Common.Axes.Ticks;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 16 "D:\Code\SEP6_CloudApplication\SEP6\_Imports.razor"
+using ChartJs.Blazor.ChartJS.Common.Enums;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 17 "D:\Code\SEP6_CloudApplication\SEP6\_Imports.razor"
+using ChartJs.Blazor.ChartJS.Common.Properties;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 18 "D:\Code\SEP6_CloudApplication\SEP6\_Imports.razor"
+using ChartJs.Blazor.Charts;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 19 "D:\Code\SEP6_CloudApplication\SEP6\_Imports.razor"
+using ChartJs.Blazor.Util;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 20 "D:\Code\SEP6_CloudApplication\SEP6\_Imports.razor"
+using DataAccessLibrary;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 21 "D:\Code\SEP6_CloudApplication\SEP6\_Imports.razor"
+using DataAccessLibrary.Models;
+
+#line default
+#line hidden
+#nullable disable
     public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

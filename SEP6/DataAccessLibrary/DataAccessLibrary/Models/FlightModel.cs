@@ -6,20 +6,22 @@ namespace DataAccessLibrary.Models
 {
     public class FlightModel
     {
-        public List<double> CountOfFlightsPerMonth(List<FlightModel> flights)
+        public int[] CountOfFlightsPerMonth(List<FlightModel> flights)
         {
-            List<double> count;
-            count = new List<double>();
-
+            int[] count = new int[flights.Count];
+            int index = 0;
             foreach (var flight in flights)
             {
-                count.Add((double)flight.Count);
+                count[index] = (int)flight.Count;
+                index++;
             }
+            Console.WriteLine(count);
             return count;
         }
         public int Month { get; set; }
+        public string MonthName { get; set; }
 
-        public int Count { get; set; }
+        public double Count { get; set; }
 
         public string Day { get; set; }
 

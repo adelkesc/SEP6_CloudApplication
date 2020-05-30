@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\adand\\Documents\\6th_semester_2020\\SEP6\\SEP6Project\\ProjectVC\\SEP6\\SEP6.csproj": {}
+    "D:\\Code\\SEP6_CloudApplication\\SEP6\\SEP6.csproj": {}
   },
   "projects": {
-    "C:\\Users\\adand\\Documents\\6th_semester_2020\\SEP6\\SEP6Project\\ProjectVC\\SEP6\\SEP6.csproj": {
+    "D:\\Code\\SEP6_CloudApplication\\SEP6\\SEP6.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\adand\\Documents\\6th_semester_2020\\SEP6\\SEP6Project\\ProjectVC\\SEP6\\SEP6.csproj",
+        "projectUniqueName": "D:\\Code\\SEP6_CloudApplication\\SEP6\\SEP6.csproj",
         "projectName": "SEP6",
-        "projectPath": "C:\\Users\\adand\\Documents\\6th_semester_2020\\SEP6\\SEP6Project\\ProjectVC\\SEP6\\SEP6.csproj",
-        "packagesPath": "C:\\Users\\adand\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\adand\\Documents\\6th_semester_2020\\SEP6\\SEP6Project\\ProjectVC\\SEP6\\obj\\",
+        "projectPath": "D:\\Code\\SEP6_CloudApplication\\SEP6\\SEP6.csproj",
+        "packagesPath": "C:\\Users\\Mihail\\.nuget\\packages\\",
+        "outputPath": "D:\\Code\\SEP6_CloudApplication\\SEP6\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\adand\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mihail\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,6 +41,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "AWSSDK": {
+              "target": "Package",
+              "version": "[2.3.55.2, )"
+            },
             "Blazor.Extensions.Canvas": {
               "target": "Package",
               "version": "[1.0.0, )"
