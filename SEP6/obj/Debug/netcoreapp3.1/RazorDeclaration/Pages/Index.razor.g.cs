@@ -105,7 +105,7 @@ using DataAccessLibrary.Models;
         {
         }
         #pragma warning restore 1998
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IFlightData fd { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IModel model { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -146,8 +146,6 @@ D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Shared\SurveyPr
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
 <<<<<<< HEAD
 =======
-D:\Code\SEP6_CloudApplication\SEP6\bin\Debug\netcoreapp3.1\Unity.Abstractions.dll
-D:\Code\SEP6_CloudApplication\SEP6\bin\Debug\netcoreapp3.1\Unity.Container.dll
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\obj\Debug\netcoreapp3.1\SEP6.csprojAssemblyReference.cache
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\obj\Debug\netcoreapp3.1\SEP6.AssemblyInfoInputs.cache
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\obj\Debug\netcoreapp3.1\SEP6.AssemblyInfo.cs
