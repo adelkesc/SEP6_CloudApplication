@@ -26,8 +26,12 @@
     private ChartJsBarChart _barChart;
     private BarDataset<double> _barDataSet;
 
-    protected override Task OnInitializedAsync()
+    private List<FlightModel> flights;
+    private string[] months;
+
+    protected override async Task OnInitializedAsync()
     {
+        flights = await model.NoFlightsPerMonthAsync();
         // Note the constructor argument
         _barChartConfig = new BarConfig(ChartType.HorizontalBar)
         {
@@ -55,4 +59,22 @@
                 }
             }
         };
+        // new
+        months = model.MonthNames();
+        _barChartConfig.Data.Labels.AddRange(months);
+
+        //Note the constructor argument
+        _barDataSet = new BarDataset<double>(horizontal: true)
+        {
+            Label = "My double dataset",
+            BackgroundColor = new[] { ColorUtil.RandomColorString(), ColorUtil.RandomColorString(), ColorUtil.RandomColorString(), ColorUtil.RandomColorString() },
+            BorderColor = ColorUtil.RandomColorString(),
+            BorderWidth = 1
+        };
+
+        _barDataSet.AddRange(new double[] { 8, 5, 3, 7 });
+        _barChartConfig.Data.Datasets.Add(_barDataSet);
+
+        return Task.CompletedTask;
+    }
     }
