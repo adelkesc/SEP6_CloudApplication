@@ -313,3 +313,7 @@ D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\MeanAirTr
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\TopDestinations.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\TotalFlights.razor.g.cs
 >>>>>>> Charts
+C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\bin\Debug\netcoreapp3.1\SEP6.StaticWebAssets.xml
+C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\bin\Debug\netcoreapp3.1\Blazor.Extensions.Canvas.JS.dll
+C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\bin\Debug\netcoreapp3.1\Blazor.Extensions.Canvas.dll
+C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\bin\Debug\netcoreapp3.1\ChartJs.Blazor.dll
