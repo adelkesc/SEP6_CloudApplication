@@ -53,6 +53,10 @@
               "target": "Package",
               "version": "[3.1.4, )"
             },
+            "Microsoft.JSInterop": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",

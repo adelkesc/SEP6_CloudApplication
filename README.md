@@ -16,23 +16,23 @@ The requirements of the SEP6 project are predefined. The main bulk of the work l
 ## **Functional requirements** 
 In what follows, “origin” refers to only JFK, EWR, and LGA. Apart from being able to load the flight data from the cloud, your system must be able to display/visualize: 
  
-- Total number of flights per month 
-- Total number of flights per month from the three origins in one plot. We want to be able to see 
+1. Total number of flights per month 
+2. Total number of flights per month from the three origins in one plot. We want to be able to see 
     - Frequency 
     - Frequency stacked 
     - Stacked percentage 
-- The top-10 destinations and how many flights were made to these 
+3. The top-10 destinations and how many flights were made to these 
     - For these 10 destinations, make a visualization of the number of flights from the three origins to the top-10 destination. 
     - The mean airtime of each of the origins in a table 
-- How many weather observations there are for the origins in a table 
-- For each of the three origins, all temperature attributes in degree Celsius (i.e. you need to convert from Fahrenheit to Celsius) 
-- The temperature (in Celsius) at JFK. 
-- The daily mean temperature (in Celsius) at JFK 
-- The daily mean temperature (in Celsius) for each origin in the same plot 
-- Mean departure and arrival delay for each origin in a table 
-- The manufacturers that have more than 200 planes 
-- The number of flights each manufacturer with more than 200 planes are responsible for
-- The number of planes of each Airbus Model 
+4. How many weather observations there are for the origins in a table 
+5. For each of the three origins, all temperature attributes in degree Celsius (i.e. you need to convert from Fahrenheit to Celsius) 
+6. The temperature (in Celsius) at JFK. 
+7. The daily mean temperature (in Celsius) at JFK 
+8. The daily mean temperature (in Celsius) for each origin in the same plot 
+9. Mean departure and arrival delay for each origin in a table 
+10. The manufacturers that have more than 200 planes 
+11. The number of flights each manufacturer with more than 200 planes are responsible for
+12. The number of planes of each Airbus Model 
  
 In the attached “examples”, you can see suggestions of how some of the above requirements can be solved. 
  

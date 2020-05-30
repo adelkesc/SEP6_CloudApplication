@@ -124,10 +124,18 @@ D:\Code\SEP6_CloudApplication\SEP6\bin\Debug\netcoreapp3.1\Npgsql.dll
 D:\Code\SEP6_CloudApplication\SEP6\bin\Debug\netcoreapp3.1\Google.Api.CommonProtos.dll
 D:\Code\SEP6_CloudApplication\SEP6\bin\Debug\netcoreapp3.1\Google.Cloud.DevTools.Common.dll
 D:\Code\SEP6_CloudApplication\SEP6\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+D:\Code\SEP6_CloudApplication\SEP6\bin\Debug\netcoreapp3.1\Unity.Abstractions.dll
+D:\Code\SEP6_CloudApplication\SEP6\bin\Debug\netcoreapp3.1\Unity.Container.dll
+D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Airlines.razor.g.cs
+D:\Code\SEP6_CloudApplication\SEP6\bin\Debug\netcoreapp3.1\SEP6.StaticWebAssets.xml
+D:\Code\SEP6_CloudApplication\SEP6\bin\Debug\netcoreapp3.1\Blazor.Extensions.Canvas.JS.dll
+D:\Code\SEP6_CloudApplication\SEP6\bin\Debug\netcoreapp3.1\Blazor.Extensions.Canvas.dll
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\SEP6.csproj.CoreCompileInputs.cache
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\SEP6.MvcApplicationPartsAssemblyInfo.cache
+D:\Code\SEP6_CloudApplication\SEP6\bin\Debug\netcoreapp3.1\ChartJs.Blazor.dll
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\SEP6.dll
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\App.razor.g.cs
+D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\Airlines.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\Counter.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\Error.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\Flights.razor.g.cs
@@ -136,6 +144,8 @@ D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Shared\MainLayo
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Shared\NavMenu.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Shared\SurveyPrompt.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
+<<<<<<< HEAD
+=======
 D:\Code\SEP6_CloudApplication\SEP6\bin\Debug\netcoreapp3.1\Unity.Abstractions.dll
 D:\Code\SEP6_CloudApplication\SEP6\bin\Debug\netcoreapp3.1\Unity.Container.dll
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\obj\Debug\netcoreapp3.1\SEP6.csprojAssemblyReference.cache
@@ -304,3 +314,4 @@ D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\Manufactu
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\MeanAirTravel.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\TopDestinations.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\TotalFlights.razor.g.cs
+>>>>>>> Charts

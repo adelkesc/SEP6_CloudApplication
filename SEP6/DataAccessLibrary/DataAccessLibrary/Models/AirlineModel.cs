@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataAccessLibrary.Models
 {
-    class AirlineModel
+    public class AirlineModel
     {
         public string Carrier { get; set; }
 
