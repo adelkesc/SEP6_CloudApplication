@@ -14,7 +14,8 @@ namespace DataAccessLibrary
 
         Task<List<FlightModel>> NoOfWeatherObservationsPerOriginAsync();
 
-        Task<List<FlightModel>> TempAtJFKInCelsiusAsync();
+        Task<List<FlightModel>> TempPerOriginAsync();
+        Task<List<FlightModel>> TempAtJFKAsync();
 
         Task<List<FlightModel>> DailyMeanTempAtJFKAsync();
 
