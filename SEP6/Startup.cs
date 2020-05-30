@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SEP6.Data;
 
 namespace SEP6
 {
@@ -29,11 +28,10 @@ namespace SEP6
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
             services.AddTransient<ISqlDataAccess, SqlDataAccess>();
-            services.AddTransient<IFlightData, FlightData>();
+            services.AddTransient<IModel, Model>();
 
-            services.AddSingleton<IFlightData, FlightData>();
+            services.AddSingleton<IModel, Model>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
