@@ -13,9 +13,7 @@ namespace DataAccessLibrary
         private List<FlightModel> flightsPerTopDest;
         private List<FlightModel> flightsWeatherPerOrigin;
         private List<FlightModel> flightsTempOrigins;
-        private List<FlightModel> flightsTempJFK;
-        private List<FlightModel> flightsDailyMeanTempOrigins;
-        private List<FlightModel> flightsDailyMeanTempJFK;
+        private List<FlightModel> flightsMeanTempOrigins;
         private List<FlightModel> flightsDelay;
         private List<FlightModel> flightsManuMoreThan200;
         private List<FlightModel> flightsPerBigManu;
@@ -47,9 +45,9 @@ namespace DataAccessLibrary
 
                 flightsPerMonth = data;
             }
+            Console.WriteLine(flightsPerMonth.Count);
             return flightsPerMonth;
         }
-
         public async Task<List<FlightModel>> NoFlightsPerMonthPerOriginAsync()
         {
             Console.WriteLine("Requesting NoFlightsPerMonthOriginAsync()");
@@ -61,10 +59,10 @@ namespace DataAccessLibrary
                 var data = await _db.LoadData<FlightModel, dynamic>(sql, new { });
 
                 flightsPerMonthOrigin = data;
+                Console.WriteLine(flightsPerMonthOrigin.Count);
             }
             return flightsPerMonthOrigin;
         }
-        //Needs Work
         public async Task<List<FlightModel>> FlightsPerTopDestAsync()
         {
             Console.WriteLine("Requesting FlightsPerTopDestAsync()");
@@ -78,13 +76,13 @@ namespace DataAccessLibrary
                 var data = await _db.LoadData<FlightModel, dynamic>(sql, new { });
 
                 flightsPerTopDest = data;
+                Console.WriteLine(flightsPerTopDest.Count);
             }
             return flightsPerTopDest;
         }
-
         public async Task<List<FlightModel>> NoOfWeatherObservationsPerOriginAsync()
         {
-            Console.WriteLine("Requesting FlightsPerTopDestAsync()");
+            Console.WriteLine("Requesting NoOfWeatherObservationsPerOriginAsync()");
             if (flightsWeatherPerOrigin == null)
             {
                 string sql = "SELECT origin, COUNT(temp) FROM public.weather " +
@@ -93,13 +91,14 @@ namespace DataAccessLibrary
                 var data = await _db.LoadData<FlightModel, dynamic>(sql, new { });
 
                 flightsWeatherPerOrigin = data;
+                Console.WriteLine(flightsWeatherPerOrigin.Count);
             }
             return flightsWeatherPerOrigin;
         }
-
+        //Can be used for requirement 6 as well.
         public async Task<List<FlightModel>> TempPerOriginAsync()
         {
-            Console.WriteLine("Requesting FlightsPerTopDestAsync()");
+            Console.WriteLine("Requesting TempPerOriginAsync()");
             if (flightsTempOrigins == null)
             {
                 string sql = "SELECT origin, time_hour, (temp-32)*5/9 AS Celcius FROM weather " +
@@ -112,55 +111,25 @@ namespace DataAccessLibrary
             }
             return flightsTempOrigins;
         }
-        
-        public async Task<List<FlightModel>> TempAtJFKAsync()
+        //Can be used for requirement 7 as well.
+        public async Task<List<FlightModel>> MeanTempPerOriginAsync()
         {
-            Console.WriteLine("Requesting FlightsPerTopDestAsync()");
-            if (flightsTempJFK == null)
+            Console.WriteLine("Requesting MeanTempPerOriginAsync()");
+            if (flightsMeanTempOrigins == null)
             {
-                string sql = "SELECT origin, time_hour, (temp-32)*5/9 AS " +
-                             "Celsius FROM public.weather WHERE origin = 'JFK';";
-
-                var data = await _db.LoadData<FlightModel, dynamic>(sql, new { });
-
-                flightsTempJFK = data;
-            }
-            return flightsTempJFK;
-        }
-
-        public async Task<List<FlightModel>> DailyMeanTempAtJFKAsync()
-        {
-            Console.WriteLine("Requesting FlightsPerTopDestAsync()");
-            if (flightsDailyMeanTempJFK == null)
-            {
-                string sql = "SELECT origin, time_hour, (AVG(temp)-32)*5/9 AS Celsius FROM public.weather"+
-                             "WHERE origin = 'JFK' GROUP BY origin, time_hour ORDER BY time_hour ASC;";
-
-                var data = await _db.LoadData<FlightModel, dynamic>(sql, new { });
-
-                flightsDailyMeanTempJFK = data;
-            }
-            return flightsDailyMeanTempJFK;
-        }
-
-        public async Task<List<FlightModel>> DailyMeanTempPerOriginAsync()
-        {
-            Console.WriteLine("Requesting FlightsPerTopDestAsync()");
-            if (flightsDailyMeanTempOrigins == null)
-            {
-                string sql = "SELECT origin, month, day, (AVG(temp)-32)*5/9 AS avg_Celcius " +
+                string sql = "SELECT origin, month, day, (AVG(temp)-32)*5/9 AS temp " +
                     "FROM weather GROUP BY origin, month, day ORDER BY day, month, origin; ";
 
                 var data = await _db.LoadData<FlightModel, dynamic>(sql, new { });
 
-                flightsDailyMeanTempOrigins = data;
+                flightsMeanTempOrigins = data;
+                Console.WriteLine(flightsMeanTempOrigins.Count);
             }
-            return flightsDailyMeanTempOrigins;
+            return flightsMeanTempOrigins;
         }
-
         public async Task<List<FlightModel>> MeanDelayPerOriginAsync()
         {
-            Console.WriteLine("Requesting FlightsPerTopDestAsync()");
+            Console.WriteLine("Requesting MeanDelayPerOriginAsync()");
             if (flightsDelay == null)
             {
                 string sql = "SELECT origin, AVG(arr_delay) AS avg_arr, AVG(dep_delay) as avg_dep " +
@@ -169,13 +138,15 @@ namespace DataAccessLibrary
                 var data = await _db.LoadData<FlightModel, dynamic>(sql, new { });
 
                 flightsDelay = data;
+                Console.WriteLine(flightsDelay.Count);
+
             }
             return flightsDelay;
         }
-
+        //INCONSISTENT
         public async Task<List<FlightModel>> ManufacturersWithShitLoadOfPlanesAsync()
         {
-            Console.WriteLine("Requesting FlightsPerTopDestAsync()");
+            Console.WriteLine("Requesting ManufacturersWithShitLoadOfPlanesAsync()");
             if (flightsManuMoreThan200 == null)
             {
                 string sql = "SELECT manufacturer, COUNT(tailnum) FROM public.planes GROUP BY manufacturer " +
@@ -184,13 +155,15 @@ namespace DataAccessLibrary
                 var data = await _db.LoadData<FlightModel, dynamic>(sql, new { });
 
                 flightsManuMoreThan200 = data;
+                Console.WriteLine(flightsManuMoreThan200.Count);
+
             }
             return flightsManuMoreThan200;
         }
-
+        //INCONSISTENT
         public async Task<List<FlightModel>> FlightsPerBigManufacturerAsync()
         {
-            Console.WriteLine("Requesting FlightsPerTopDestAsync()");
+            Console.WriteLine("Requesting FlightsPerBigManufacturerAsync()");
             if (flightsPerBigManu == null)
             {
                 string sql = "SELECT planes.manufacturer, COUNT(flight) FROM public.planes, flights WHERE planes.tailnum = flights.tailnum " +
@@ -199,13 +172,14 @@ namespace DataAccessLibrary
                 var data = await _db.LoadData<FlightModel, dynamic>(sql, new { });
 
                 flightsPerBigManu = data;
+                Console.WriteLine(flightsPerBigManu.Count);
+
             }
             return flightsPerBigManu;
         }
-
         public async Task<List<FlightModel>> NoOfAirbusesPerModelAsync()
         {
-            Console.WriteLine("Requesting FlightsPerTopDestAsync()");
+            Console.WriteLine("Requesting NoOfAirbusesPerModelAsync()");
             if (flightsAirbusPerManu == null)
             {
                 string sql = "SELECT manufacturer, COUNT(tailnum) FROM public.planes WHERE manufacturer = " +
@@ -214,6 +188,8 @@ namespace DataAccessLibrary
                 var data = await _db.LoadData<FlightModel, dynamic>(sql, new { });
 
                 flightsAirbusPerManu = data;
+                Console.WriteLine(flightsAirbusPerManu.Count);
+
             }
             return flightsAirbusPerManu;
         }

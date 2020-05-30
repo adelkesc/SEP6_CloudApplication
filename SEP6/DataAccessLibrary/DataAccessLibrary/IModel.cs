@@ -15,17 +15,14 @@ namespace DataAccessLibrary
         Task<List<FlightModel>> NoOfWeatherObservationsPerOriginAsync();
 
         Task<List<FlightModel>> TempPerOriginAsync();
-        Task<List<FlightModel>> TempAtJFKAsync();
 
-        Task<List<FlightModel>> DailyMeanTempAtJFKAsync();
-
-        Task<List<FlightModel>> DailyMeanTempPerOriginAsync();
+        Task<List<FlightModel>> MeanTempPerOriginAsync();
 
         Task<List<FlightModel>> MeanDelayPerOriginAsync();
 
         Task<List<FlightModel>> ManufacturersWithShitLoadOfPlanesAsync();
 
-        Task<List<FlightModel>> AvgFlightsPerBigManufacturerAsync();
+        Task<List<FlightModel>> FlightsPerBigManufacturerAsync();
 
         Task<List<FlightModel>> NoOfAirbusesPerModelAsync();
     }
