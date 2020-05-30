@@ -31,7 +31,6 @@ else
     protected override async Task OnInitializedAsync()
     {
         flights = await model.NoFlightsPerMonthAsync();
-        CalculateArrays();
 
         _config = new PieConfig
         {
@@ -51,6 +50,7 @@ else
             }
         };
 
+        months = flights[0].MonthNames();
         _config.Data.Labels.AddRange(months);
 
         var pieSet = new PieDataset
@@ -67,20 +67,8 @@ else
             HoverBorderWidth = 1,
             BorderColor = "#ffffff",
         };
-
+        count = flights[0].CountOfFlightsPerMonth(flights);
         pieSet.Data.AddRange(count);
         _config.Data.Datasets.Add(pieSet);
-    }
-
-    protected void CalculateArrays()
-    {
-        months = new[] { "January", "February", "March", "April", "May", "June", "July", "August"
-        , "September", "October", "November", "December"};
-        count = new List<double>();
-
-        foreach (var flight in flights)
-        {
-            count.Add((double)flight.Count);
-        }
     }
 }
