@@ -103,7 +103,7 @@ using DataAccessLibrary.Models;
             __builder.AddMarkupContent(1, "<p>Please make a selection.</p>");
         }
         #pragma warning restore 1998
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IModel fd { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IModel model { get; set; }
     }
 }
 #pragma warning restore 1591
