@@ -6,7 +6,25 @@ namespace DataAccessLibrary.Models
 {
     public class FlightModel
     {
+        public string[] MonthNames()
+        {
+            string[] months;
+            months = new[] { "January", "February", "March", "April", "May", "June", "July", "August"
+        , "September", "October", "November", "December"};
+            return months;
+        }
 
+        public List<double> CountOfFlightsPerMonth(List<FlightModel> flights)
+        {
+            List<double> count;
+            count = new List<double>();
+
+            foreach (var flight in flights)
+            {
+                count.Add((double)flight.Count);
+            }
+            return count;
+        }
         public string Year { get; set; }
 
         public int Month { get; set; }
