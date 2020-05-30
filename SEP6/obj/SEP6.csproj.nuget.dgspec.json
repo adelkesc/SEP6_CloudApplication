@@ -41,10 +41,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "AWSSDK": {
-              "target": "Package",
-              "version": "[2.3.55.2, )"
-            },
             "Blazor.Extensions.Canvas": {
               "target": "Package",
               "version": "[1.0.0, )"

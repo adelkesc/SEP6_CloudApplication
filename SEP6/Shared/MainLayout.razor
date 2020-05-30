@@ -1,5 +1,6 @@
 ﻿@inherits LayoutComponentBase
-
+@using DataAccessLibrary
+@inject IModel model; 
 <div class="sidebar">
     <NavMenu />
 </div>
@@ -13,3 +14,12 @@
         @Body
     </div>
 </div>
+@code{
+    private List<FlightModel> data;
+
+    protected async Task OnInitializedAsync()
+    {
+
+        data = await model.NoFlightsPerMonthAsync();
+    }
+}

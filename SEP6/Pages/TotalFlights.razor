@@ -1,5 +1,4 @@
 ﻿@page "/totalflights"
-
 @using ChartJs.Blazor.ChartJS.BarChart
 @using ChartJs.Blazor.ChartJS.Common.Axes
 @using ChartJs.Blazor.ChartJS.Common.Axes.Ticks
@@ -10,65 +9,95 @@
 @using DataAccessLibrary
 @using DataAccessLibrary.Models
 @using ChartJs.Blazor.ChartJS.Common.Wrappers
+@using ChartJs.Blazor.ChartJS.BarChart.Axes
 
 @inject IModel model;
-
-<h3>Total Flights per Month</h3>
-
-<div class="row">
-    <button class="btn btn-primary" @onclick="AddData">Add Data</button>
-</div>
-<ChartJsBarChart @ref="_barChart"
-                 Config="@_barChartConfig"
-                 Width="600"
-                 Height="300" />
-
-<p>A graph will be here soon!</p>
-
-<button type="button">
-    Flights from 3 Origins
-</button>
-<br>
-<a href="totalflights/meanairtravel">Mean Airtravel</a>
-
+@if (data == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <ChartJsBarChart @ref="_barChart"
+                     Config="@_barChartConfig"
+                     Width="600"
+                     Height="300" />
+}
 
 @code {
     private BarConfig _barChartConfig;
     private ChartJsBarChart _barChart;
-    private List<FlightModel> flights;
-    private BarDataset<Int32Wrapper> _barDataSet;
+    private BarDataset<DoubleWrapper> _barDataSet;
+    private List<FlightModel> data;
 
-    private List<FlightModel> flights;
-    private string[] months;
-
-    protected override async Task OnInitializedAsync()
+    protected async override void OnInitialized()
     {
-        flights = await model.NoFlightsPerMonthAsync();
-        // Note the constructor argument
-        _barChartConfig = new BarConfig(ChartType.HorizontalBar)
+        data = await model.NoFlightsPerMonthAsync();
+        _barChartConfig = new BarConfig
         {
             Options = new BarOptions
             {
                 Title = new OptionsTitle
                 {
                     Display = true,
-                    Text = "Simple Bar Chart"
+                    Text = "Total Flights per Month"
                 },
-                Responsive = true,
                 Scales = new BarScales
                 {
                     XAxes = new List<CartesianAxis>
-        {
-                        new LinearCartesianAxis
+                {
+                        new BarCategoryAxis
+                        {
+                            BarPercentage = 0.5,
+                            BarThickness = BarThickness.Flex
+                        }
+                    },
+                    YAxes = new List<CartesianAxis>
+                {
+                        new BarLinearCartesianAxis
                         {
                             Ticks = new LinearCartesianTicks
                             {
-                                AutoSkip = false,
-                                Min = 0 // Otherwise the lowest value in the dataset won't be visible
+                                BeginAtZero = true
                             }
                         }
                     }
                 }
             }
         };
+        string[] months;
+        months = new[] { "January", "February", "March", "April", "May", "June", "July", "August"
+        , "September", "October", "November", "December"};
+        _barChartConfig.Data.Labels.AddRange(months);
+
+        _barDataSet = new BarDataset<DoubleWrapper>
+        {
+            Label = "Total Flights per Month",
+            BackgroundColor = new[] { ColorUtil.RandomColorString(), ColorUtil.RandomColorString(),
+                                        ColorUtil.RandomColorString(), ColorUtil.RandomColorString(),
+                                        ColorUtil.RandomColorString(), ColorUtil.RandomColorString(),
+                                        ColorUtil.RandomColorString(), ColorUtil.RandomColorString(),
+                                        ColorUtil.RandomColorString(), ColorUtil.RandomColorString(),
+                                        ColorUtil.RandomColorString(), ColorUtil.RandomColorString(),},
+            BorderWidth = 0,
+            HoverBackgroundColor = ColorUtil.RandomColorString(),
+            HoverBorderColor = ColorUtil.RandomColorString(),
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff"
+        };
+
+        _barChartConfig.Data.Datasets.Add(_barDataSet);
+        double[] count = data[0].CountOfFlightsPerMonth(data);
+        int index = 0;
+        if (data != null)
+        {
+            foreach (var flight in data)
+            {
+
+                _barDataSet.Add(count[index]);
+                index++;
+            }
+        }
+        this.StateHasChanged();
     }
+}

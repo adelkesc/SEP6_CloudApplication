@@ -24,7 +24,6 @@
     ".NETCoreApp,Version=v3.1": {
       "SEP6/1.0.0": {
         "dependencies": {
-          "AWSSDK": "2.3.55.2",
           "Blazor.Extensions.Canvas": "1.0.0",
           "ChartJs.Blazor": "1.1.0",
           "Dapper": "2.0.35",
@@ -312,17 +311,6 @@
         },
         "compile": {
           "SEP6.dll": {}
-        }
-      },
-      "AWSSDK/2.3.55.2": {
-        "runtime": {
-          "lib/net45/AWSSDK.dll": {
-            "assemblyVersion": "2.3.55.2",
-            "fileVersion": "2.3.55.2"
-          }
-        },
-        "compile": {
-          "lib/net45/AWSSDK.dll": {}
         }
       },
       "Blazor.Extensions.Canvas/1.0.0": {
@@ -3423,13 +3411,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "AWSSDK/2.3.55.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-zy/6psTOx9c8LaZqL1tUtiGKMpd35b16TNRctz/N6Qc6hqFeOjyZ5WVhn89szJkkZtotcMFyfq58Y2RfyRxxUg==",
-      "path": "awssdk/2.3.55.2",
-      "hashPath": "awssdk.2.3.55.2.nupkg.sha512"
     },
     "Blazor.Extensions.Canvas/1.0.0": {
       "type": "package",

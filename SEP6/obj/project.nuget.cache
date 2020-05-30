@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "c1pEhWTqSvyl54VxLgC/63iMvTfYctkwytFftGFnqa2Tqjxienw+FewfxrNr0JQTYHjNHZyPmrRv8L5AMrBzKQ==",
+  "dgSpecHash": "ernroW+GretkFkjWrP48qQ+6AtfkaxMqxe2MeAp85Qn3uvJ8rXmgkqdCKN9AxF4M9l4zsbedwhjOgG7egGR9oA==",
   "success": true,
   "projectFilePath": "D:\\Code\\SEP6_CloudApplication\\SEP6\\SEP6.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Mihail\\.nuget\\packages\\awssdk\\2.3.55.2\\awssdk.2.3.55.2.nupkg.sha512",
     "C:\\Users\\Mihail\\.nuget\\packages\\blazor.extensions.canvas\\1.0.0\\blazor.extensions.canvas.1.0.0.nupkg.sha512",
     "C:\\Users\\Mihail\\.nuget\\packages\\chartjs.blazor\\1.1.0\\chartjs.blazor.1.1.0.nupkg.sha512",
     "C:\\Users\\Mihail\\.nuget\\packages\\dapper\\2.0.35\\dapper.2.0.35.nupkg.sha512",
@@ -141,16 +140,5 @@
     "C:\\Users\\Mihail\\.nuget\\packages\\unity\\5.11.7\\unity.5.11.7.nupkg.sha512",
     "C:\\Users\\Mihail\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'AWSSDK 2.3.55.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
-      "libraryId": "AWSSDK",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    }
-  ]
+  "logs": []
 }
