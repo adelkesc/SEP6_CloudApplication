@@ -40,5 +40,7 @@ namespace DataAccessLibrary.Models
         public string Hour { get; set; }
 
         public string Minute { get; set; }
+
+        public double Celsius { get; set; }
     }
 }

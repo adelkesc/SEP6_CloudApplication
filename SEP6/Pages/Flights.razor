@@ -30,7 +30,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        flights = await model.GetFlightsAsync();
+        flights = await model.NoFlightsPerMonthAsync();
         CalculateArrays();
 
         _config = new PieConfig
