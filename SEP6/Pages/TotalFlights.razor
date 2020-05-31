@@ -1,4 +1,4 @@
-﻿@page "/totalflights"
+﻿@page "/totalFlights"
 @using ChartJs.Blazor.ChartJS.BarChart
 @using ChartJs.Blazor.ChartJS.Common.Axes
 @using ChartJs.Blazor.ChartJS.Common.Axes.Ticks
@@ -32,7 +32,7 @@ else
 
     protected async override void OnInitialized()
     {
-        data = await model.NoFlightsPerMonthAsync();
+        data = await model.NoFlightsPerMonthPerOriginAsync();
         _barChartConfig = new BarConfig
         {
             Options = new BarOptions
@@ -48,8 +48,8 @@ else
                 {
                         new BarCategoryAxis
                         {
-                            BarPercentage = 0.5,
-                            BarThickness = BarThickness.Flex
+                            BarThickness = BarThickness.Flex,
+                            Stacked = true
                         }
                     },
                     YAxes = new List<CartesianAxis>
@@ -65,37 +65,83 @@ else
                 }
             }
         };
+
         string[] months;
         months = new[] { "January", "February", "March", "April", "May", "June", "July", "August"
         , "September", "October", "November", "December"};
         _barChartConfig.Data.Labels.AddRange(months);
 
-        _barDataSet = new BarDataset<DoubleWrapper>
-        {
-            Label = "Total Flights per Month",
-            BackgroundColor = new[] { ColorUtil.RandomColorString(), ColorUtil.RandomColorString(),
-                                        ColorUtil.RandomColorString(), ColorUtil.RandomColorString(),
-                                        ColorUtil.RandomColorString(), ColorUtil.RandomColorString(),
-                                        ColorUtil.RandomColorString(), ColorUtil.RandomColorString(),
-                                        ColorUtil.RandomColorString(), ColorUtil.RandomColorString(),
-                                        ColorUtil.RandomColorString(), ColorUtil.RandomColorString(),},
-            BorderWidth = 0,
-            HoverBackgroundColor = ColorUtil.RandomColorString(),
-            HoverBorderColor = ColorUtil.RandomColorString(),
-            HoverBorderWidth = 1,
-            BorderColor = "#ffffff"
-        };
 
-        _barChartConfig.Data.Datasets.Add(_barDataSet);
-        double[] count = data[0].CountOfFlightsPerMonth(data);
-        int index = 0;
-        if (data != null)
+        if(data != null)
         {
-            foreach (var flight in data)
+            double[] countJFK = data[0].TotalFlights(data, "JFK");
+            double[] countEWR = data[0].TotalFlights(data, "EWR");
+            double[] countLGA = data[0].TotalFlights(data, "LGA");
+
+            var barSet1 = new BarDataset<DoubleWrapper>
             {
+                Label = "JFK",
+                BackgroundColor = ColorUtil.RandomColorString(),
+                BorderWidth = 1,
+                HoverBackgroundColor = ColorUtil.ColorString(0, 0, 0, 0.1),
+                HoverBorderColor = ColorUtil.RandomColorString(),
+                HoverBorderWidth = 1,
+                BorderColor = "#ffffff",
+            };
 
-                _barDataSet.Add(count[index]);
-                index++;
+            //add data
+            _barChartConfig.Data.Datasets.Add(barSet1);
+
+            var barSet2 = new BarDataset<DoubleWrapper>
+            {
+                Label = "EWR",
+                BackgroundColor = ColorUtil.RandomColorString(),
+                BorderWidth = 1,
+                HoverBackgroundColor = ColorUtil.ColorString(0, 0, 0, 0.1),
+                HoverBorderColor = ColorUtil.RandomColorString(),
+                HoverBorderWidth = 1,
+                BorderColor = "#ffffff",
+            };
+
+            //add data
+            _barChartConfig.Data.Datasets.Add(barSet2);
+
+            var barSet3 = new BarDataset<DoubleWrapper>
+            {
+                Label = "LGA",
+                BackgroundColor = ColorUtil.RandomColorString(),
+                BorderWidth = 1,
+                HoverBackgroundColor = ColorUtil.ColorString(0, 0, 0, 0.1),
+                HoverBorderColor = ColorUtil.RandomColorString(),
+                HoverBorderWidth = 1,
+                BorderColor = "#ffffff",
+            };
+            //add data
+            _barChartConfig.Data.Datasets.Add(barSet3);
+
+            int index1 = 0;
+            int index2 = 0;
+            int index3 = 0;
+            if (data != null)
+            {
+                foreach (var flight in countJFK)
+                {
+
+                    barSet1.Add(countJFK[index1]);
+                    index1++;
+                }
+                foreach (var flight in countEWR)
+                {
+
+                    barSet2.Add(countEWR[index2]);
+                    index2++;
+                }
+                foreach (var flight in countLGA)
+                {
+
+                    barSet3.Add(countLGA[index3]);
+                    index3++;
+                }
             }
         }
         this.StateHasChanged();

@@ -39,7 +39,7 @@ namespace DataAccessLibrary
             Console.WriteLine("Requesting NoFlightsPerMonthAsync()");
             if (flightsPerMonth == null)
             {
-                string sql = "SELECT month, count(month) FROM public.flights GROUP BY month ORDER BY month ASC;";
+                string sql = "SELECT month, count(month), origin FROM public.flights GROUP BY  origin, month ORDER BY month ASC;";
                 
                 var data = await _db.LoadData<FlightModel, dynamic>(sql, new { });
 
