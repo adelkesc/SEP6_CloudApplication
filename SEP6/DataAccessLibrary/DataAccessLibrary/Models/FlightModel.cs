@@ -69,6 +69,30 @@ namespace DataAccessLibrary.Models
             return calendar;
         }
 
+        public string[] GetMeanDateFormat(List<FlightModel> flights)
+        {
+            int size = 0;
+            foreach (var flight in flights)
+            {
+                if (flight.Origin == "JFK")
+                {
+                    size++;
+                }
+            }
+            string[] calendar = new string[size];
+            int index = 0;
+            foreach (var flight in flights)
+            {
+                if (flight.Origin == "JFK")
+                {
+                    calendar[index] = flight.Month.ToString() + " / "+ flight.Day.ToString();
+                    index++;
+                }
+
+            }
+            return calendar;
+        }
+
         public int Month { get; set; }
         public string MonthName { get; set; }
 
@@ -76,9 +100,9 @@ namespace DataAccessLibrary.Models
 
         public string Day { get; set; }
 
-        public string Avg_dep { get; set; }
+        public double Avg_dep { get; set; }
         
-        public string Avg_arr { get; set; }
+        public double Avg_arr { get; set; }
 
         public string Carrier { get; set; }
 

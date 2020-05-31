@@ -1,0 +1,63 @@
+﻿@page "/planes"
+
+
+@using DataAccessLibrary
+@using DataAccessLibrary.Models
+
+@inject IModel model
+@if (data == null && data1==null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <h1>Manufacturers that have more than 200 planes.</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Manufacturer</th>
+                <th>Number Of Operating Planes</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in data)
+            {
+                <tr>
+                    <td>@flight.Manufacturer</td>
+                    <td>@flight.Count</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h1>The number of planes of each Airbus Model</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Manufacturer</th>
+                <th>Number Of Operating Planes</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in data1)
+            {
+                <tr>
+                    <td>@flight.Manufacturer</td>
+                    <td>@flight.Count</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<FlightModel> data;
+    private List<FlightModel> data1;
+
+    protected async override Task OnInitializedAsync()
+    {
+        data = await model.ManufacturersWithShitLoadOfPlanesAsync();
+        data1 = await model.NoOfAirbusesPerModelAsync();
+        this.StateHasChanged();
+    }
+}
+

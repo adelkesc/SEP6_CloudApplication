@@ -1,0 +1,44 @@
+﻿@page "/delays"
+
+
+@using DataAccessLibrary
+@using DataAccessLibrary.Models
+
+@inject IModel model
+@if (data == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Origin</th>
+                <th>Average Arrival Delay</th>
+                <th>Average Departure Delay</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in data)
+            {
+                <tr>
+                    <td>@flight.Origin</td>
+                    <td>@Math.Round(flight.Avg_arr, 2) Minutes</td>
+                    <td>@Math.Round(flight.Avg_dep, 2) Minutes</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    private List<FlightModel> data;
+
+    protected async override Task OnInitializedAsync()
+    {
+        data = await model.MeanDelayPerOriginAsync();
+        this.StateHasChanged();
+    }
+}
