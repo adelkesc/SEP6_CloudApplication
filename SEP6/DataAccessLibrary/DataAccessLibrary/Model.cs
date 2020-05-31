@@ -97,7 +97,6 @@ namespace DataAccessLibrary
                 var data = await _db.LoadData<FlightModel, dynamic>(sql, new { });
 
                 flightsWeatherPerOrigin = data;
-                Console.WriteLine(flightsWeatherPerOrigin.Count);
             }
             return flightsWeatherPerOrigin;
         }
@@ -107,7 +106,7 @@ namespace DataAccessLibrary
             Console.WriteLine("Requesting TempPerOriginAsync()");
             if (flightsTempOrigins == null)
             {
-                string sql = "SELECT origin, time_hour, (temp-32)*5/9 AS Celcius FROM weather " +
+                string sql = "SELECT origin, time_hour, (temp-32)*5/9 AS Celsius FROM weather " +
                              "GROUP BY time_hour, origin, temp ORDER BY time_hour ASC;";
 
                 var data = await _db.LoadData<FlightModel, dynamic>(sql, new { });

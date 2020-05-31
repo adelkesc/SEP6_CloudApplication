@@ -1,45 +1,148 @@
 ﻿@page "/checkweather"
 
+@using ChartJs.Blazor.ChartJS.BarChart
+@using ChartJs.Blazor.ChartJS.BarChart.Axes
+@using ChartJs.Blazor.ChartJS.Common.Axes
+@using ChartJs.Blazor.ChartJS.Common.Axes.Ticks
+@using ChartJs.Blazor.ChartJS.Common.Properties
+@using ChartJs.Blazor.Charts
+@using ChartJs.Blazor.Util
 @using DataAccessLibrary
 @using DataAccessLibrary.Models
+@using ChartJs.Blazor.ChartJS.Common.Wrappers
+@using ChartJs.Blazor.ChartJS.MixedChart
 
 @inject IModel model;
 
 <h3>Number of Weather Observations per Origin</h3>
 
-@if (data == null)
+@if (data == null || data1 == null)
 {
     <p>Loading...</p>
 }
 else
 {
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Origin</th>
-            <th>Number of Weather Observations</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var flight in data)
-        {
-            <tr>
-                <td>@flight.Origin</td>
-                <td>@flight.Count</td>
-            </tr>
-        }
-    </tbody>
-</table>
+    if (data1 != null)
+    {
+        <table class="table table-striped text-center">
+            <thead>
+                <tr>
+                    <th>Origin</th>
+                    <th>Number of Weather Observations</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var flight in data1)
+                {
+                    <tr>
+                        <td>@flight.Origin</td>
+                        <td>@flight.Count</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    if (data != null)
+    {
+        <ChartJsBarChart @ref="_barChart"
+                         Config="@_barChartConfig"
+                         Width="600"
+                         Height="300" />
+    }
 }
 
-<a href="/checkweather/temperatures">Go to Check Temperatures</a>
-
 @code {
+    private List<FlightModel> data1;
     private List<FlightModel> data;
+    private BarConfig _barChartConfig;
+    private ChartJsBarChart _barChart;
+    private BarDataset<DoubleWrapper> _barDataSet1;
+    private BarDataset<DoubleWrapper> _barDataSet2;
+    private BarDataset<DoubleWrapper> _barDataSet3;
 
     protected override async Task OnInitializedAsync()
     {
-        data = await model.NoOfWeatherObservationsPerOriginAsync();
+        data = await model.TempPerOriginAsync();
+        data1 = await model.NoOfWeatherObservationsPerOriginAsync();
+
+        _barChartConfig = new BarConfig
+        {
+            Options = new BarOptions
+            {
+                Title = new OptionsTitle
+                {
+                    Display = true,
+                    Text = "Simple Bar Chart"
+                },
+                Scales = new BarScales
+                {
+                    XAxes = new List<CartesianAxis>
+{
+                        new BarCategoryAxis
+                        {
+                            BarThickness = BarThickness.Flex,
+                            Stacked = true,
+                        }
+                    },
+                    YAxes = new List<CartesianAxis>
+{
+                        new BarLinearCartesianAxis
+                        {
+                            Ticks = new LinearCartesianTicks
+                            {
+                                BeginAtZero = true
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        _barDataSet1 = new BarDataset<DoubleWrapper>
+        {
+            Label = "JFK",
+            BackgroundColor = ColorUtil.RandomColorString(),
+            BorderWidth = 0,
+            HoverBackgroundColor = ColorUtil.RandomColorString(),
+            HoverBorderColor = ColorUtil.RandomColorString(),
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff"
+        };
+        _barDataSet2 = new BarDataset<DoubleWrapper>
+        {
+            Label = "LGA",
+            BackgroundColor = ColorUtil.RandomColorString(),
+            BorderWidth = 0,
+            HoverBackgroundColor = ColorUtil.RandomColorString(),
+            HoverBorderColor = ColorUtil.RandomColorString(),
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff"
+        };
+        _barDataSet3 = new BarDataset<DoubleWrapper>
+        {
+            Label = "EWR",
+            BackgroundColor = ColorUtil.RandomColorString(),
+            BorderWidth = 0,
+            HoverBackgroundColor = ColorUtil.RandomColorString(),
+            HoverBorderColor = ColorUtil.RandomColorString(),
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff"
+        };
+
+        if (data != null)
+        {
+            _barChartConfig.Data.Labels.AddRange(data[0].GetDateFormat(data));
+
+            var countJFK = (data[0].Temperatures(data, "JFK")).Wrap();
+            var countLGA = (data[0].Temperatures(data, "LGA")).Wrap();
+            var countEWR = (data[0].Temperatures(data, "EWR")).Wrap();
+            _barDataSet1.AddRange(countJFK);
+            _barDataSet2.AddRange(countLGA);
+            _barDataSet3.AddRange(countEWR);
+            _barChartConfig.Data.Datasets.Add(_barDataSet1);
+            _barChartConfig.Data.Datasets.Add(_barDataSet2);
+            _barChartConfig.Data.Datasets.Add(_barDataSet3);
+        }
         this.StateHasChanged();
     }
 }

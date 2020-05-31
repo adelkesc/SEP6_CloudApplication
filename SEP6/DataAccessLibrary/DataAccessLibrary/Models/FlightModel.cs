@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Protobuf.Reflection;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -20,7 +21,54 @@ namespace DataAccessLibrary.Models
             }
             return count;
         }
-        
+
+        public double[] Temperatures(List<FlightModel> flights, string origin)
+        {
+            int size = 0;
+            foreach(var flight in flights)
+            {
+                if (flight.Origin == origin)
+                {
+                    size++;
+                }
+            }
+            double[] count = new double[size];
+            int index = 0;
+            foreach (var flight in flights)
+            {
+                if (flight.Origin == origin)
+                {
+                    count[index] = Math.Round((double)flight.Celsius,2);
+                    index++;
+                }
+            }
+            return count;
+        }
+
+        public string[] GetDateFormat(List<FlightModel> flights)
+        {
+            int size = 0;
+            foreach (var flight in flights)
+            {
+                if (flight.Origin == "JFK")
+                {
+                    size++;
+                }
+            }
+            string[] calendar = new string[size];
+            int index = 0;
+            foreach (var flight in flights)
+            {
+                if(flight.Origin == "JFK")
+                {
+                    calendar[index] = flight.Time_hour.ToString();
+                    index++;
+                }
+                
+            }
+            return calendar;
+        }
+
         public int Month { get; set; }
         public string MonthName { get; set; }
 
@@ -42,7 +90,7 @@ namespace DataAccessLibrary.Models
 
         public string Dest { get; set; }
 
-        public string Air_time { get; set; }
+        public double Air_time { get; set; }
 
         public string Distance { get; set; }
 
@@ -53,5 +101,7 @@ namespace DataAccessLibrary.Models
         public string Manufacturer { get; set; }
 
         public DateTime Time_hour { get; set; }
+
+        public double Celsius { get; set; }
     }
 }
