@@ -75,7 +75,7 @@ namespace DataAccessLibrary
             Console.WriteLine("Requesting FlightsPerTopDestAsync()");
             if (flightsPerTopDest == null)
             {
-                string sql = "SELECT origin, dest, COUNT(flight), AVG(air_time) FROM flights " +
+                string sql = "SELECT origin, dest, COUNT(flight), AVG(air_time) AS Air_time FROM flights " +
                     "WHERE dest = 'ORD' OR dest = 'LAX' OR dest = 'MIA' OR dest = 'ATL' OR dest = " +
                     "'SFO' OR dest = 'BOS' OR dest = 'CLT' OR dest = 'DFW' OR dest = 'MCO' OR dest = " +
                     "'IAH' GROUP BY dest, origin ORDER BY dest;";
@@ -149,7 +149,6 @@ namespace DataAccessLibrary
             }
             return flightsDelay;
         }
-        //INCONSISTENT
         public async Task<List<FlightModel>> ManufacturersWithShitLoadOfPlanesAsync()
         {
             Console.WriteLine("Requesting ManufacturersWithShitLoadOfPlanesAsync()");
@@ -173,7 +172,7 @@ namespace DataAccessLibrary
             if (flightsPerBigManu == null)
             {
                 string sql = "SELECT planes.manufacturer, COUNT(flight) FROM public.planes, flights WHERE planes.tailnum = flights.tailnum " +
-                             "GROUP BY manufacturer HAVING COUNT(planes.tailnum) > 200 ORDER BY COUNT(flight) DESC; ";
+                             "GROUP BY manufacturer HAVING COUNT(tailnum) > 200 ORDER BY COUNT(flight) DESC; ";
 
                 var data = await _db.LoadData<FlightModel, dynamic>(sql, new { });
 

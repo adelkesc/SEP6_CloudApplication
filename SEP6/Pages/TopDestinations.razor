@@ -23,6 +23,26 @@ else
                      Config="@_barChartConfig"
                      Width="600"
                      Height="300" />
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Mean Air Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in data)
+            {
+                <tr>
+                    <td>@flight.Origin</td>
+                    <td>@flight.Dest</td>
+                    <td>@flight.Air_time</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 
 @code {

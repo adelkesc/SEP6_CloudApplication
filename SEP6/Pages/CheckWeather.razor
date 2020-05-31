@@ -1,16 +1,45 @@
 ﻿@page "/checkweather"
 
-<h3>The Weather at The Origins</h3>
+@using DataAccessLibrary
+@using DataAccessLibrary.Models
 
-<p>
-   - How many weather observations there are for the origins in a table.
-    <br>
-   - For each of the three origins, all temperature attributes in degree 
-    Celsius (i.e. you need to convert from Fahrenheit to Celsius)
-</p>
+@inject IModel model;
+
+<h3>Number of Weather Observations per Origin</h3>
+
+@if (data == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Origin</th>
+            <th>Number of Weather Observations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var flight in data)
+        {
+            <tr>
+                <td>@flight.Origin</td>
+                <td>@flight.Count</td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
 
 <a href="/checkweather/temperatures">Go to Check Temperatures</a>
 
 @code {
+    private List<FlightModel> data;
 
+    protected override async Task OnInitializedAsync()
+    {
+        data = await model.NoOfWeatherObservationsPerOriginAsync();
+        this.StateHasChanged();
+    }
 }
