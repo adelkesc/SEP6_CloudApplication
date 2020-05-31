@@ -1,11 +1,145 @@
 ﻿@page "/topDestinations"
 
-<h3>Top 10 Destinations</h3>
-<p>Under Construction</p>
+@using ChartJs.Blazor.ChartJS.BarChart
+@using ChartJs.Blazor.ChartJS.Common.Axes
+@using ChartJs.Blazor.ChartJS.Common.Axes.Ticks
+@using ChartJs.Blazor.ChartJS.Common.Enums
+@using ChartJs.Blazor.ChartJS.Common.Properties
+@using ChartJs.Blazor.Charts
+@using ChartJs.Blazor.Util
+@using DataAccessLibrary
+@using DataAccessLibrary.Models
+@using ChartJs.Blazor.ChartJS.Common.Wrappers
+@using ChartJs.Blazor.ChartJS.BarChart.Axes
 
-<h3>Number of Flights to Destinations</h3>
-<p>Under Construction</p>
+@inject IModel model;
+@if (data == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <ChartJsBarChart @ref="_barChart"
+                     Config="@_barChartConfig"
+                     Width="600"
+                     Height="300" />
+}
 
 @code {
 
+    private BarConfig _barChartConfig;
+    private ChartJsBarChart _barChart;
+    private BarDataset<DoubleWrapper> _barDataSet;
+    private List<FlightModel> data;
+
+    protected async override void OnInitialized()
+    {
+        data = await model.FlightsPerTopDestAsync();
+        _barChartConfig = new BarConfig
+        {
+            Options = new BarOptions
+            {
+                Title = new OptionsTitle
+                {
+                    Display = true,
+                    Text = "Total Flights Towards Top Ten Destinations"
+                },
+                Scales = new BarScales
+                {
+                    XAxes = new List<CartesianAxis>
+            {
+                        new BarCategoryAxis
+                        {
+                            BarThickness = BarThickness.Flex
+                        }
+                    },
+                    YAxes = new List<CartesianAxis>
+            {
+                        new BarLinearCartesianAxis
+                        {
+                            Ticks = new LinearCartesianTicks
+                            {
+                                BeginAtZero = true
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        if (data != null)
+        {
+            string[] destinations = model.TopDestinationsNames();
+            _barChartConfig.Data.Labels.AddRange(destinations);
+
+            double[] countJFK = data[0].TotalFlights(data, "JFK");
+            double[] countEWR = data[0].TotalFlights(data, "EWR");
+            double[] countLGA = data[0].TotalFlights(data, "LGA");
+
+            var barSet1 = new BarDataset<DoubleWrapper>
+            {
+                Label = "JFK",
+                BackgroundColor = ColorUtil.RandomColorString(),
+                BorderWidth = 1,
+                HoverBackgroundColor = ColorUtil.ColorString(0, 0, 0, 0.1),
+                HoverBorderColor = ColorUtil.RandomColorString(),
+                HoverBorderWidth = 1,
+                BorderColor = "#ffffff",
+            };
+
+            _barChartConfig.Data.Datasets.Add(barSet1);
+
+            var barSet2 = new BarDataset<DoubleWrapper>
+            {
+                Label = "EWR",
+                BackgroundColor = ColorUtil.RandomColorString(),
+                BorderWidth = 1,
+                HoverBackgroundColor = ColorUtil.ColorString(0, 0, 0, 0.1),
+                HoverBorderColor = ColorUtil.RandomColorString(),
+                HoverBorderWidth = 1,
+                BorderColor = "#ffffff",
+            };
+
+            _barChartConfig.Data.Datasets.Add(barSet2);
+
+            var barSet3 = new BarDataset<DoubleWrapper>
+            {
+                Label = "LGA",
+                BackgroundColor = ColorUtil.RandomColorString(),
+                BorderWidth = 1,
+                HoverBackgroundColor = ColorUtil.ColorString(0, 0, 0, 0.1),
+                HoverBorderColor = ColorUtil.RandomColorString(),
+                HoverBorderWidth = 1,
+                BorderColor = "#ffffff",
+            };
+
+            _barChartConfig.Data.Datasets.Add(barSet3);
+
+            int index1 = 0;
+            int index2 = 0;
+            int index3 = 0;
+            if (data != null)
+            {
+                foreach (var flight in countJFK)
+                {
+
+                    barSet1.Add(countJFK[index1]);
+                    index1++;
+                }
+                foreach (var flight in countEWR)
+                {
+
+                    barSet2.Add(countEWR[index2]);
+                    index2++;
+                }
+                foreach (var flight in countLGA)
+                {
+
+                    barSet3.Add(countLGA[index3]);
+                    index3++;
+                }
+            }
+        }
+        this.StateHasChanged();
+    }
 }

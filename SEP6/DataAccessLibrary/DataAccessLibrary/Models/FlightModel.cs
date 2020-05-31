@@ -20,6 +20,7 @@ namespace DataAccessLibrary.Models
             }
             return count;
         }
+        
         public int Month { get; set; }
         public string MonthName { get; set; }
 

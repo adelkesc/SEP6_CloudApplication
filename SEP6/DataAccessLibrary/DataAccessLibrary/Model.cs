@@ -33,6 +33,13 @@ namespace DataAccessLibrary
         , "September", "October", "November", "December"};
             return months;
         }
+        public string[] TopDestinationsNames()
+        {
+            string[] destinations = new string[] {"ATL", "BOS", "CLT", "DFW", "IAH",
+                                                  "LAX", "MCO","MIA","ORD","SFO"};
+            
+            return destinations;
+        }
 
         public async Task<List<FlightModel>> NoFlightsPerMonthAsync()
         {
@@ -76,7 +83,6 @@ namespace DataAccessLibrary
                 var data = await _db.LoadData<FlightModel, dynamic>(sql, new { });
 
                 flightsPerTopDest = data;
-                Console.WriteLine(flightsPerTopDest.Count);
             }
             return flightsPerTopDest;
         }
