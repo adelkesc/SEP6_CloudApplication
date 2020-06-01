@@ -8,6 +8,7 @@ namespace DataAccessLibrary
     {
         string[] MonthNames();
         string[] TopDestinationsNames();
+
         Task<List<FlightModel>> NoFlightsPerMonthAsync();
 
         Task<List<FlightModel>> NoFlightsPerMonthPerOriginAsync();

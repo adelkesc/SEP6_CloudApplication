@@ -11,12 +11,33 @@ namespace DataAccessLibrary.Models
         {
             double[] count = new double[flights.Count];
             int index = 0;
-            foreach (var flight in flights)
+            int indexOne = -1;
+            int month = 0;
+            if (origin == "all")
             {
-                if(flight.Origin == origin)
+                foreach (var flight in flights)
                 {
-                    count[index] = (double)flight.Count;
-                    index++;
+                    if (month == flight.Month)
+                    {
+                        count[indexOne] += (double)flight.Count;
+                    }
+                    else
+                    {
+                        indexOne++;
+                        month++;
+                        count[indexOne] = (double)flight.Count;
+                    }
+                }
+            }
+            else
+            {
+                foreach (var flight in flights)
+                {
+                    if (flight.Origin == origin)
+                    {
+                        count[index] = (double)flight.Count;
+                        index++;
+                    }
                 }
             }
             return count;
