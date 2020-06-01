@@ -68,10 +68,6 @@
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.1, )"
-            },
-            "Unity": {
-              "target": "Package",
-              "version": "[5.11.7, )"
             }
           },
           "imports": [

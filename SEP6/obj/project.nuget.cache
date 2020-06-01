@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ernroW+GretkFkjWrP48qQ+6AtfkaxMqxe2MeAp85Qn3uvJ8rXmgkqdCKN9AxF4M9l4zsbedwhjOgG7egGR9oA==",
+  "dgSpecHash": "SLVR5z4xIfvD6/jzsN7Rt7VsOl+bQCEUCx1WdMi/smXVz8AmMRg/SUTc+NzUOS0PgfCnHJO9OW6M4/RjxZMuTQ==",
   "success": true,
   "projectFilePath": "D:\\Code\\SEP6_CloudApplication\\SEP6\\SEP6.csproj",
   "expectedPackageFiles": [
@@ -137,7 +137,6 @@
     "C:\\Users\\Mihail\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\Mihail\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Mihail\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Mihail\\.nuget\\packages\\unity\\5.11.7\\unity.5.11.7.nupkg.sha512",
     "C:\\Users\\Mihail\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
   ],
   "logs": []
