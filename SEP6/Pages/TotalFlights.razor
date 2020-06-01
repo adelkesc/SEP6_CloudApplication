@@ -23,6 +23,11 @@ else
                      Config="@_barChartConfig"
                      Width="600"
                      Height="300" />
+
+    <div class="btn-group d-flex justify-content-center" role="group">
+        <button type="button" class="btn btn-secondary" @onclick="Change">Frequency Chart</button>
+        <button type="button" class="btn btn-secondary" @onclick="ShowTotalFlights">All Flights</button>
+    </div>
 }
 
 @code {
@@ -31,6 +36,8 @@ else
     private BarDataset<DoubleWrapper> _barDataSet;
     private List<FlightModel> data;
     private bool change = true;
+
+    private BarDataset<DoubleWrapper> _barDataSetTotal;
 
     public void Change()
     {
@@ -44,6 +51,25 @@ else
                 }
             };
         this.StateHasChanged();
+    }
+
+    public void ShowTotalFlights()
+    {
+        _barChartConfig.Data.Datasets.Clear();
+
+        var datasetTotal = new BarDataset<DoubleWrapper>
+        {
+            Label = "All Flights",
+            BackgroundColor = ColorUtil.RandomColorString(),
+            BorderWidth = 0,
+            HoverBackgroundColor = ColorUtil.RandomColorString(),
+            HoverBorderColor = ColorUtil.RandomColorString(),
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff"
+        };
+        _barChartConfig.Data.Datasets.Add(_barDataSetTotal);
+        datasetTotal.AddRange();
+
     }
 
     protected async override void OnInitialized()
