@@ -71,7 +71,7 @@ else
     public Task Switch()
     {
         change = !change;
-        if (!change)
+        if (change)
         {
             _barChartConfig.Data.Labels.Clear();
             _barChartConfig.Data.Labels.AddRange(data2[0].GetDateFormat(data2));
