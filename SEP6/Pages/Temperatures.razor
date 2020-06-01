@@ -45,17 +45,10 @@ else
         </tbody>
     </table>
 
-    
         <ChartJsBarChart @ref="_barChart"
                          Config="@_barChartConfig"
                          Width="600"
                          Height="300" />
-    
-        <ChartJsBarChart @ref="_barChart2"
-                         Config="@_barChartConfig2"
-                         Width="600"
-                         Height="300" />
-    
 }
 
 @code {
@@ -78,7 +71,23 @@ else
     public Task Switch()
     {
         change = !change;
-        this.StateHasChanged();
+        if (!change)
+        {
+            _barChartConfig.Data.Labels.Clear();
+            _barChartConfig.Data.Labels.AddRange(data2[0].GetDateFormat(data2));
+            _barChartConfig.Data.Datasets[0] = _barDataSet11;
+            _barChartConfig.Data.Datasets[1] = _barDataSet12;
+            _barChartConfig.Data.Datasets[2] = _barDataSet13;
+        }
+        else
+        {
+            _barChartConfig.Data.Labels.Clear();
+            _barChartConfig.Data.Labels.AddRange(data[0].GetDateFormat(data));
+            _barChartConfig.Data.Datasets[0] = _barDataSet21;
+            _barChartConfig.Data.Datasets[1] = _barDataSet22;
+            _barChartConfig.Data.Datasets[2] = _barDataSet23;
+        }
+
         return Task.CompletedTask;
     }
 
@@ -113,38 +122,6 @@ else
                             Ticks = new LinearCartesianTicks
                             {
                                 BeginAtZero = true
-                            }
-                        }
-                    }
-                }
-            }
-        };
-        _barChartConfig2 = new BarConfig
-        {
-            Options = new BarOptions
-            {
-                Title = new OptionsTitle
-                {
-                    Display = true,
-                    Text = "Daily Mean Temperatures in 2013"
-                },
-                Scales = new BarScales
-                {
-                    XAxes = new List<CartesianAxis>
-{
-                        new BarCategoryAxis
-                        {
-                            BarThickness = BarThickness.Flex,
-                            Stacked = true,
-                        }
-                    },
-                    YAxes = new List<CartesianAxis>
-{
-                        new BarLinearCartesianAxis
-                        {
-                            Ticks = new LinearCartesianTicks
-                            {
-                                BeginAtZero = true,
                             }
                         }
                     }
@@ -216,8 +193,6 @@ else
         if (data != null)
         {
             _barChartConfig.Data.Labels.AddRange(data[0].GetDateFormat(data));
-
-
             countJFK = (data[0].Temperatures(data, "JFK"));
             countLGA = (data[0].Temperatures(data, "LGA"));
             countEWR = (data[0].Temperatures(data, "EWR"));
@@ -231,16 +206,12 @@ else
 
         if (data2 != null)
         {
-            _barChartConfig2.Data.Labels.AddRange(data2[0].GetMeanDateFormat(data2));
             count1JFK = (data2[0].Temperatures(data2, "JFK"));
             count2LGA = (data2[0].Temperatures(data2, "LGA"));
             count3EWR = (data2[0].Temperatures(data2, "EWR"));
             _barDataSet21.AddRange(countJFK.Wrap());
             _barDataSet22.AddRange(countLGA.Wrap());
             _barDataSet23.AddRange(countEWR.Wrap());
-            _barChartConfig2.Data.Datasets.Add(_barDataSet21);
-            _barChartConfig2.Data.Datasets.Add(_barDataSet22);
-            _barChartConfig2.Data.Datasets.Add(_barDataSet23);
         }
         this.StateHasChanged();
     }

@@ -25,23 +25,38 @@ else
                      Height="300" />
 
     <table class="table table-striped">
+
         <thead>
+
             <tr>
+
                 <th>Origin</th>
+
                 <th>Destination</th>
+
                 <th>Mean Air Time</th>
+
             </tr>
+
         </thead>
+
         <tbody>
+
             @foreach (var flight in data)
             {
                 <tr>
+
                     <td>@flight.Origin</td>
+
                     <td>@flight.Dest</td>
+
                     <td>@Math.Round(flight.Air_time,2) Minutes</td>
+
                 </tr>
             }
+
         </tbody>
+
     </table>
 }
 

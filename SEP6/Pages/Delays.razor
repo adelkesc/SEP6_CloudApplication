@@ -14,18 +14,18 @@ else
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Origin</th>
-                <th>Average Arrival Delay</th>
-                <th>Average Departure Delay</th>
+                <th class="text-center">Origin</th>
+                <th class="text-center">Average Arrival Delay</th>
+                <th class="text-center">Average Departure Delay</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var flight in data)
             {
                 <tr>
-                    <td>@flight.Origin</td>
-                    <td>@Math.Round(flight.Avg_arr, 2) Minutes</td>
-                    <td>@Math.Round(flight.Avg_dep, 2) Minutes</td>
+                    <td class="text-center">@flight.Origin</td>
+                    <td class="text-center">@Math.Round(flight.Avg_arr, 2) Minutes</td>
+                    <td class="text-center">@Math.Round(flight.Avg_dep, 2) Minutes</td>
                 </tr>
             }
         </tbody>

@@ -13,12 +13,14 @@ else
 {
     <h1>Manufacturers that have more than 200 planes.</h1>
     <table class="table table-striped">
+
         <thead>
             <tr>
                 <th>Manufacturer</th>
                 <th>Number Of Operating Planes</th>
             </tr>
         </thead>
+
         <tbody>
             @foreach (var flight in data)
             {
@@ -28,6 +30,7 @@ else
                 </tr>
             }
         </tbody>
+
     </table>
     <h1>The number of planes of each Airbus Model</h1>
     <table class="table table-striped">
