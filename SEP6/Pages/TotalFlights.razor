@@ -22,12 +22,16 @@ else
     <ChartJsBarChart @ref="_barChart"
                      Config="@_barChartConfig"
                      Width="600"
-                     Height="300" />
-
+                     Height="400" />
+    <br>
+    <br>
     <div class="btn-group d-flex justify-content-center" role="group">
-        <button type="button" class="btn btn-secondary" @onclick="ShowStackedFlights">Total Flighs Frequency</button>
         <button type="button" class="btn btn-secondary" @onclick="ShowTotalFlights">Total Flights per Month</button>
+        <button type="button" class="btn btn-secondary" @onclick="ShowStackedFlights">Total Flighs Frequency</button> <!--Non functional-->
+        <button type="button" class="btn btn-secondary" @onclick="ShowStackedFlights">Total Flighs Frequency Stacked</button>
     </div>
+    <br>
+    <br>
 }
 
 @code {
@@ -44,7 +48,7 @@ else
     {
         change = !change;
         _barChartConfig.Options.Scales.XAxes = new List<CartesianAxis>
-            {
+        {
                 new BarCategoryAxis
                 {
                     BarThickness = BarThickness.Flex,
@@ -54,30 +58,30 @@ else
         var barSet1 = new BarDataset<DoubleWrapper>
         {
             Label = "JFK",
-            BackgroundColor = ColorUtil.RandomColorString(),
+            BackgroundColor = "#892514",
             BorderWidth = 1,
-            HoverBackgroundColor = ColorUtil.ColorString(0, 0, 0, 0.1),
-            HoverBorderColor = ColorUtil.RandomColorString(),
+            HoverBackgroundColor = "#892514",
+            HoverBorderColor = "#892514",
             HoverBorderWidth = 1,
             BorderColor = "#ffffff",
         };
         var barSet2 = new BarDataset<DoubleWrapper>
         {
             Label = "EWR",
-            BackgroundColor = ColorUtil.RandomColorString(),
+            BackgroundColor = "#2cac19",
             BorderWidth = 1,
-            HoverBackgroundColor = ColorUtil.ColorString(0, 0, 0, 0.1),
-            HoverBorderColor = ColorUtil.RandomColorString(),
+            HoverBackgroundColor = "#2cac19",
+            HoverBorderColor = "#2cac19",
             HoverBorderWidth = 1,
             BorderColor = "#ffffff",
         };
         var barSet3 = new BarDataset<DoubleWrapper>
         {
             Label = "LGA",
-            BackgroundColor = ColorUtil.RandomColorString(),
+            BackgroundColor = "#154591",
             BorderWidth = 1,
-            HoverBackgroundColor = ColorUtil.ColorString(0, 0, 0, 0.1),
-            HoverBorderColor = ColorUtil.RandomColorString(),
+            HoverBackgroundColor = "#154591",
+            HoverBorderColor = "#154591",
             HoverBorderWidth = 1,
             BorderColor = "#ffffff",
         };
@@ -99,10 +103,10 @@ else
         var datasetTotal = new BarDataset<DoubleWrapper>
         {
             Label = "All Flights",
-            BackgroundColor = ColorUtil.RandomColorString(),
+            BackgroundColor = "#6682ea",
             BorderWidth = 0,
-            HoverBackgroundColor = ColorUtil.RandomColorString(),
-            HoverBorderColor = ColorUtil.RandomColorString(),
+            HoverBackgroundColor = "#6682ea",
+            HoverBorderColor = "#6682ea",
             HoverBorderWidth = 1,
             BorderColor = "#ffffff"
         };
@@ -128,7 +132,7 @@ else
                 Scales = new BarScales
                 {
                     XAxes = new List<CartesianAxis>
-                    {
+                {
                         new BarCategoryAxis
                         {
                             BarThickness = BarThickness.Flex,
@@ -136,7 +140,7 @@ else
                         }
                     },
                     YAxes = new List<CartesianAxis>
-                {
+            {
                         new BarLinearCartesianAxis
                         {
                             Ticks = new LinearCartesianTicks
@@ -156,7 +160,7 @@ else
         _barChartConfig.Data.Labels.AddRange(months);
 
 
-        if(data != null)
+        if (data != null)
         {
             double[] countJFK = data[0].TotalFlights(data, "JFK");
             double[] countEWR = data[0].TotalFlights(data, "EWR");
@@ -165,10 +169,10 @@ else
             var barSet1 = new BarDataset<DoubleWrapper>
             {
                 Label = "JFK",
-                BackgroundColor = ColorUtil.RandomColorString(),
+                BackgroundColor = "#892514",
                 BorderWidth = 1,
-                HoverBackgroundColor = ColorUtil.ColorString(0, 0, 0, 0.1),
-                HoverBorderColor = ColorUtil.RandomColorString(),
+                HoverBackgroundColor = "#892514",
+                HoverBorderColor = "#892514",
                 HoverBorderWidth = 1,
                 BorderColor = "#ffffff",
             };
@@ -178,10 +182,10 @@ else
             var barSet2 = new BarDataset<DoubleWrapper>
             {
                 Label = "EWR",
-                BackgroundColor = ColorUtil.RandomColorString(),
+                BackgroundColor = "#2cac19",
                 BorderWidth = 1,
-                HoverBackgroundColor = ColorUtil.ColorString(0, 0, 0, 0.1),
-                HoverBorderColor = ColorUtil.RandomColorString(),
+                HoverBackgroundColor = "#2cac19",
+                HoverBorderColor = "#2cac19",
                 HoverBorderWidth = 1,
                 BorderColor = "#ffffff",
             };
@@ -191,10 +195,10 @@ else
             var barSet3 = new BarDataset<DoubleWrapper>
             {
                 Label = "LGA",
-                BackgroundColor = ColorUtil.RandomColorString(),
+                BackgroundColor = "#154591",
                 BorderWidth = 1,
-                HoverBackgroundColor = ColorUtil.ColorString(0, 0, 0, 0.1),
-                HoverBorderColor = ColorUtil.RandomColorString(),
+                HoverBackgroundColor = "#154591",
+                HoverBorderColor = "#154591",
                 HoverBorderWidth = 1,
                 BorderColor = "#ffffff",
             };
