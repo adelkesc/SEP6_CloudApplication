@@ -326,3 +326,4 @@ D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\Page
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\Delays.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Planes.razor.g.cs
 D:\Code\SEP6_CloudApplication\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\Planes.razor.g.cs
+D:\Code\SEP6_CloudApplication\SEP6\bin\Debug\netcoreapp3.1\app.yaml
