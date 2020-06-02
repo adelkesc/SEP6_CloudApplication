@@ -114,6 +114,23 @@ namespace DataAccessLibrary.Models
             return calendar;
         }
 
+        public double[] ManufacturerFlights(List<FlightModel> flights)
+        {
+            int index = 0;
+            double[] result = new double[flights.Count];
+            foreach(var flight in flights)
+            {
+                if (flights[index].Count == null)
+                    result[index] = 0;
+                else
+                {
+                    result[index] = flights[index].Count;
+                    index++;
+                }
+            }
+            return result;
+        }
+
         public int Month { get; set; }
         public string MonthName { get; set; }
 

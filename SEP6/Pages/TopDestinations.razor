@@ -121,7 +121,7 @@ else
                 HoverBorderWidth = 1,
                 BorderColor = "#ffffff",
             };
-
+            barSet1.AddRange(countJFK.Wrap());
             _barChartConfig.Data.Datasets.Add(barSet1);
 
             var barSet2 = new BarDataset<DoubleWrapper>
@@ -134,7 +134,7 @@ else
                 HoverBorderWidth = 1,
                 BorderColor = "#ffffff",
             };
-
+            barSet2.AddRange(countEWR.Wrap());
             _barChartConfig.Data.Datasets.Add(barSet2);
 
             var barSet3 = new BarDataset<DoubleWrapper>
@@ -147,33 +147,8 @@ else
                 HoverBorderWidth = 1,
                 BorderColor = "#ffffff",
             };
-
+            barSet3.AddRange(countLGA.Wrap());
             _barChartConfig.Data.Datasets.Add(barSet3);
-
-            int index1 = 0;
-            int index2 = 0;
-            int index3 = 0;
-            if (data != null)
-            {
-                foreach (var flight in countJFK)
-                {
-
-                    barSet1.Add(countJFK[index1]);
-                    index1++;
-                }
-                foreach (var flight in countEWR)
-                {
-
-                    barSet2.Add(countEWR[index2]);
-                    index2++;
-                }
-                foreach (var flight in countLGA)
-                {
-
-                    barSet3.Add(countLGA[index3]);
-                    index3++;
-                }
-            }
         }
         this.StateHasChanged();
     }

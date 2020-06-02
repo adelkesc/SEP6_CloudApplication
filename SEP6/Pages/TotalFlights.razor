@@ -18,6 +18,7 @@
 }
 else
 {
+    <p>Please click on the respective color in the legend of the chart to filter it.</p>
     <ChartJsBarChart @ref="_barChart"
                      Config="@_barChartConfig"
                      Width="600"
@@ -50,7 +51,6 @@ else
                     Stacked = change
                 }
             };
-        this.StateHasChanged();
         var barSet1 = new BarDataset<DoubleWrapper>
         {
             Label = "JFK",

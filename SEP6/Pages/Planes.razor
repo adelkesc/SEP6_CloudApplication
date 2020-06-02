@@ -3,14 +3,25 @@
 
 @using DataAccessLibrary
 @using DataAccessLibrary.Models
+@using ChartJs.Blazor.ChartJS.BarChart
+@using ChartJs.Blazor.ChartJS.BarChart.Axes
+@using ChartJs.Blazor.ChartJS.Common.Axes
+@using ChartJs.Blazor.ChartJS.Common.Axes.Ticks
+@using ChartJs.Blazor.ChartJS.Common.Properties
+@using ChartJs.Blazor.Charts
+@using ChartJs.Blazor.Util
+@using ChartJs.Blazor.ChartJS.Common.Wrappers
 
 @inject IModel model
-@if (data == null && data1==null)
+@if (data == null && data1 == null)
 {
     <p>Loading...</p>
 }
 else
 {
+    <ChartJsBarChart @ref="_barChartJs" Config="@_config" Width="600" Height="300" />
+
+
     <h1>Manufacturers that have more than 200 planes.</h1>
     <table class="table table-striped">
 
@@ -55,12 +66,77 @@ else
 @code {
     private List<FlightModel> data;
     private List<FlightModel> data1;
+    private List<FlightModel> data2;
+    private BarConfig _config;
+    private string[] companies;
+    private List<double> count;
+
+    private BarDataset<DoubleWrapper> _barDataSet;
+    private ChartJsBarChart _barChartJs;
 
     protected async override Task OnInitializedAsync()
     {
         data = await model.ManufacturersWithShitLoadOfPlanesAsync();
         data1 = await model.NoOfAirbusesPerModelAsync();
+        data2 = await model.FlightsPerBigManufacturerAsync();
+
+        _config = new BarConfig
+        {
+            Options = new BarOptions
+            {
+                Title = new OptionsTitle
+                {
+                    Display = true,
+                    Text = "Number of Flights which the top Manufacturers are responsible for"
+                },
+                Scales = new BarScales
+                {
+                    XAxes = new List<CartesianAxis>
+                {
+                        new BarCategoryAxis
+                        {
+                            BarThickness = BarThickness.Flex
+                        }
+                    },
+                    YAxes = new List<CartesianAxis>
+                {
+                        new BarLinearCartesianAxis
+                        {
+                            Ticks = new LinearCartesianTicks
+                            {
+                                BeginAtZero = true
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        if (data2 != null)
+        {
+
+
+            string[] names = model.ManuNames();
+            _config.Data.Labels.AddRange(names);
+            double[] flights = data2[0].ManufacturerFlights(data2);
+
+
+            var barSet1 = new BarDataset<DoubleWrapper>
+            {
+                Label = "JFK",
+                BackgroundColor = ColorUtil.RandomColorString(),
+                BorderWidth = 1,
+                HoverBackgroundColor = ColorUtil.ColorString(0, 0, 0, 0.1),
+                HoverBorderColor = ColorUtil.RandomColorString(),
+                HoverBorderWidth = 1,
+                BorderColor = "#ffffff",
+            };
+
+            barSet1.AddRange(flights.Wrap());
+            _config.Data.Datasets.Add(barSet1);
+        }
         this.StateHasChanged();
     }
+
 }
 

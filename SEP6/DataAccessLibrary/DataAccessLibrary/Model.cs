@@ -41,6 +41,11 @@ namespace DataAccessLibrary
             return destinations;
         }
 
+        public string[] ManuNames()
+        {
+            string[] names = new string[] { "BOEING", "AIRBUS INDUSTRIE", "AIRBUS", "EMBRAER", "BOMBARDIER INC" };
+            return names;
+        }
         public async Task<List<FlightModel>> NoFlightsPerMonthAsync()
         {
             Console.WriteLine("Requesting NoFlightsPerMonthAsync()");
@@ -170,14 +175,15 @@ namespace DataAccessLibrary
             Console.WriteLine("Requesting FlightsPerBigManufacturerAsync()");
             if (flightsPerBigManu == null)
             {
-                string sql = "SELECT planes.manufacturer, COUNT(flight) FROM public.planes, flights WHERE planes.tailnum = flights.tailnum " +
-                             "GROUP BY manufacturer HAVING COUNT(tailnum) > 200 ORDER BY COUNT(flight) DESC; ";
+                string sql = "SELECT planes.manufacturer, COUNT(flight) FROM planes, flights " +
+                    "WHERE planes.tailnum = flights.tailnum AND(manufacturer = 'BOEING' OR manufacturer = 'AIRBUS INDUSTRIE'" +
+                    "OR manufacturer = 'BOMBARDIER INC' OR manufacturer = 'AIRBUS' OR manufacturer = 'EMBRAER') " +
+                    "GROUP BY manufacturer ORDER BY COUNT(flight) DESC; ";
 
                 var data = await _db.LoadData<FlightModel, dynamic>(sql, new { });
 
                 flightsPerBigManu = data;
                 Console.WriteLine(flightsPerBigManu.Count);
-
             }
             return flightsPerBigManu;
         }
