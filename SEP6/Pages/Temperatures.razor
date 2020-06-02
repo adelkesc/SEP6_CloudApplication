@@ -74,7 +74,7 @@ else
         if (change)
         {
             _barChartConfig.Data.Labels.Clear();
-            _barChartConfig.Options.Title.Text = "Daily Mean Temperatures In 2013";
+            _barChartConfig.Options.Title.Text = "Daily Mean Temperatures In 2013 (Month/Day)";
             _barChartConfig.Data.Labels.AddRange(data2[0].GetMeanDateFormat(data2));
             _barChartConfig.Data.Datasets[0] = _barDataSet11;
             _barChartConfig.Data.Datasets[1] = _barDataSet12;
