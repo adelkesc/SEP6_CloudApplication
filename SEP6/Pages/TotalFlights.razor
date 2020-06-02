@@ -18,16 +18,16 @@
 }
 else
 {
-    <p>Please click on the respective color in the legend of the chart to filter it.</p>
+    <button type=" button" class="btn btn-primary" @onclick="Change">Change CHart</button>
     <ChartJsBarChart @ref="_barChart"
                      Config="@_barChartConfig"
                      Width="600"
-                     Height="400" />
+                     Height="300" />
     <br>
     <br>
     <div class="btn-group d-flex justify-content-center" role="group">
         <button type="button" class="btn btn-secondary" @onclick="ShowTotalFlights">Total Flights per Month</button>
-        <button type="button" class="btn btn-secondary" @onclick="ShowStackedFlights">Total Flighs Frequency</button> <!--Non functional-->
+        <button type="button" class="btn btn-secondary" @onclick="ShowPercentage">Total Flighs Frequency Stacked In Percentage</button> 
         <button type="button" class="btn btn-secondary" @onclick="ShowStackedFlights">Total Flighs Frequency Stacked</button>
     </div>
     <br>
@@ -39,12 +39,13 @@ else
     private ChartJsBarChart _barChart;
     private BarDataset<DoubleWrapper> _barDataSet;
     private List<FlightModel> data;
+    private List<FlightModel> data1;
     private bool change = true;
 
     private BarDataset<DoubleWrapper> _barDataSetTotal;
 
 
-    public void ShowStackedFlights()
+    public void Change()
     {
         change = !change;
         _barChartConfig.Options.Scales.XAxes = new List<CartesianAxis>
@@ -55,6 +56,10 @@ else
                     Stacked = change
                 }
             };
+    }
+
+    public void ShowStackedFlights()
+    {
         var barSet1 = new BarDataset<DoubleWrapper>
         {
             Label = "JFK",
@@ -97,6 +102,50 @@ else
         _barChartConfig.Data.Datasets.Add(barSet3);
     }
 
+    public void ShowPercentage()
+    {
+        var barSet1 = new BarDataset<DoubleWrapper>
+        {
+            Label = "JFK",
+            BackgroundColor = "#892514",
+            BorderWidth = 1,
+            HoverBackgroundColor = "#892514",
+            HoverBorderColor = "#892514",
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff",
+        };
+        var barSet2 = new BarDataset<DoubleWrapper>
+        {
+            Label = "EWR",
+            BackgroundColor = "#2cac19",
+            BorderWidth = 1,
+            HoverBackgroundColor = "#2cac19",
+            HoverBorderColor = "#2cac19",
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff",
+        };
+        var barSet3 = new BarDataset<DoubleWrapper>
+        {
+            Label = "LGA",
+            BackgroundColor = "#154591",
+            BorderWidth = 1,
+            HoverBackgroundColor = "#154591",
+            HoverBorderColor = "#154591",
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff",
+        };
+        double[] countJFK = model.Percentage(data, "JFK");
+        double[] countEWR = model.Percentage(data, "EWR");
+        double[] countLGA = model.Percentage(data, "LGA");
+        _barChartConfig.Data.Datasets.Clear();
+        barSet1.AddRange(countJFK.Wrap());
+        barSet2.AddRange(countEWR.Wrap());
+        barSet3.AddRange(countLGA.Wrap());
+        _barChartConfig.Data.Datasets.Add(barSet1);
+        _barChartConfig.Data.Datasets.Add(barSet2);
+        _barChartConfig.Data.Datasets.Add(barSet3);
+    }
+
     public void ShowTotalFlights()
     {
         //Total Flights
@@ -120,6 +169,8 @@ else
     protected async override void OnInitialized()
     {
         data = await model.NoFlightsPerMonthPerOriginAsync();
+        data1 = await model.TotalFlightsMonthAsync();
+
         _barChartConfig = new BarConfig
         {
             Options = new BarOptions

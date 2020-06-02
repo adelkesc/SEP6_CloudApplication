@@ -8,6 +8,7 @@ namespace DataAccessLibrary
     public class Model : IModel
     {
         private readonly ISqlDataAccess _db;
+        private List<FlightModel> flightsTotal;
         private List<FlightModel> flightsPerMonth;
         private List<FlightModel> flightsPerMonthOrigin;
         private List<FlightModel> flightsPerTopDest;
@@ -46,6 +47,41 @@ namespace DataAccessLibrary
             string[] names = new string[] { "BOEING", "AIRBUS INDUSTRIE", "AIRBUS", "EMBRAER", "BOMBARDIER INC" };
             return names;
         }
+
+        public double[] Percentage(List<FlightModel> flights, string origin)
+        {
+            double[] count = new double[12];
+            int index = 0;
+            double value;
+
+            foreach(var flight in flights)
+            {
+                if(flight.Origin == origin)
+                {
+                    value = (flight.Count / flightsTotal[index].Count) * 100;
+                    count[index] = Math.Round(value, 2);
+                    index++;
+                }
+                
+            }
+            return count;
+        }
+
+        public async Task<List<FlightModel>> TotalFlightsMonthAsync()
+        {
+            Console.WriteLine("TotalFlightsMonth()");
+            if (flightsTotal == null)
+            {
+                string sql = "SELECT COUNT(flight), month FROM public.flights " +
+                             "GROUP BY month ORDER BY month ASC; ";
+
+                var data = await _db.LoadData<FlightModel, dynamic>(sql, new { });
+
+                flightsTotal = data;
+            }
+            return flightsTotal;
+        }
+
         public async Task<List<FlightModel>> NoFlightsPerMonthAsync()
         {
             Console.WriteLine("Requesting NoFlightsPerMonthAsync()");

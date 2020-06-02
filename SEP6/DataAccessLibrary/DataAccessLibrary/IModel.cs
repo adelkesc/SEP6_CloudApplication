@@ -11,6 +11,10 @@ namespace DataAccessLibrary
 
         string[] ManuNames();
 
+        double[] Percentage(List<FlightModel> flights, string origin);
+
+        Task<List<FlightModel>> TotalFlightsMonthAsync();
+
         Task<List<FlightModel>> NoFlightsPerMonthAsync();
 
         Task<List<FlightModel>> NoFlightsPerMonthPerOriginAsync();

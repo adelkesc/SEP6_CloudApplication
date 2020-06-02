@@ -74,7 +74,8 @@ else
         if (change)
         {
             _barChartConfig.Data.Labels.Clear();
-            _barChartConfig.Data.Labels.AddRange(data2[0].GetDateFormat(data2));
+            _barChartConfig.Options.Title.Text = "Daily Mean Temperatures In 2013";
+            _barChartConfig.Data.Labels.AddRange(data2[0].GetMeanDateFormat(data2));
             _barChartConfig.Data.Datasets[0] = _barDataSet11;
             _barChartConfig.Data.Datasets[1] = _barDataSet12;
             _barChartConfig.Data.Datasets[2] = _barDataSet13;
@@ -82,6 +83,7 @@ else
         else
         {
             _barChartConfig.Data.Labels.Clear();
+            _barChartConfig.Options.Title.Text = "Hourly Precise Temperatures In 2013";
             _barChartConfig.Data.Labels.AddRange(data[0].GetDateFormat(data));
             _barChartConfig.Data.Datasets[0] = _barDataSet21;
             _barChartConfig.Data.Datasets[1] = _barDataSet22;
@@ -103,7 +105,7 @@ else
                 Title = new OptionsTitle
                 {
                     Display = true,
-                    Text = "Hourly Precise Temperatures in 2013"
+                    Text = "Hourly Precise Temperatures In 2013"
                 },
                 Scales = new BarScales
                 {
