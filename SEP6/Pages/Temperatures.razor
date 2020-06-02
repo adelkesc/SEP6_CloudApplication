@@ -55,7 +55,7 @@ else
     private List<FlightModel> data;
     private List<FlightModel> data2;
 
-    private bool change = false;
+    private bool change = true;
 
     private BarConfig _barChartConfig;
     private ChartJsBarChart _barChart;
@@ -70,8 +70,8 @@ else
 
     public Task Switch()
     {
-        change = !change;
-        if (!change)
+
+        if (change)
         {
             _barChartConfig.Data.Labels.Clear();
             _barChartConfig.Data.Labels.AddRange(data2[0].GetDateFormat(data2));
@@ -87,7 +87,7 @@ else
             _barChartConfig.Data.Datasets[1] = _barDataSet22;
             _barChartConfig.Data.Datasets[2] = _barDataSet23;
         }
-
+        change = !change;
         return Task.CompletedTask;
     }
 

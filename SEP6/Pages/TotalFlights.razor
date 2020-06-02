@@ -18,14 +18,13 @@
 }
 else
 {
-    <button class="btn btn-primary" @onclick="Change">Change Chart</button>
     <ChartJsBarChart @ref="_barChart"
                      Config="@_barChartConfig"
                      Width="600"
                      Height="300" />
 
     <div class="btn-group d-flex justify-content-center" role="group">
-        <button type="button" class="btn btn-secondary" @onclick="Change">Total Flighs Frequency</button>
+        <button type="button" class="btn btn-secondary" @onclick="ShowStackedFlights">Total Flighs Frequency</button>
         <button type="button" class="btn btn-secondary" @onclick="ShowTotalFlights">Total Flights per Month</button>
     </div>
 }
@@ -38,9 +37,9 @@ else
     private bool change = true;
 
     private BarDataset<DoubleWrapper> _barDataSetTotal;
-    public bool isDisplayed;
 
-    public void Change()
+
+    public void ShowStackedFlights()
     {
         change = !change;
         _barChartConfig.Options.Scales.XAxes = new List<CartesianAxis>
@@ -52,37 +51,66 @@ else
                 }
             };
         this.StateHasChanged();
+        var barSet1 = new BarDataset<DoubleWrapper>
+        {
+            Label = "JFK",
+            BackgroundColor = ColorUtil.RandomColorString(),
+            BorderWidth = 1,
+            HoverBackgroundColor = ColorUtil.ColorString(0, 0, 0, 0.1),
+            HoverBorderColor = ColorUtil.RandomColorString(),
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff",
+        };
+        var barSet2 = new BarDataset<DoubleWrapper>
+        {
+            Label = "EWR",
+            BackgroundColor = ColorUtil.RandomColorString(),
+            BorderWidth = 1,
+            HoverBackgroundColor = ColorUtil.ColorString(0, 0, 0, 0.1),
+            HoverBorderColor = ColorUtil.RandomColorString(),
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff",
+        };
+        var barSet3 = new BarDataset<DoubleWrapper>
+        {
+            Label = "LGA",
+            BackgroundColor = ColorUtil.RandomColorString(),
+            BorderWidth = 1,
+            HoverBackgroundColor = ColorUtil.ColorString(0, 0, 0, 0.1),
+            HoverBorderColor = ColorUtil.RandomColorString(),
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff",
+        };
+        double[] countJFK = data[0].TotalFlights(data, "JFK");
+        double[] countEWR = data[0].TotalFlights(data, "EWR");
+        double[] countLGA = data[0].TotalFlights(data, "LGA");
+        _barChartConfig.Data.Datasets.Clear();
+        barSet1.AddRange(countJFK.Wrap());
+        barSet2.AddRange(countEWR.Wrap());
+        barSet3.AddRange(countLGA.Wrap());
+        _barChartConfig.Data.Datasets.Add(barSet1);
+        _barChartConfig.Data.Datasets.Add(barSet2);
+        _barChartConfig.Data.Datasets.Add(barSet3);
     }
 
     public void ShowTotalFlights()
     {
-
-        if(!isDisplayed)
+        //Total Flights
+        var datasetTotal = new BarDataset<DoubleWrapper>
         {
-            //Total Flights
-            var datasetTotal = new BarDataset<DoubleWrapper>
-            {
-                Label = "All Flights",
-                BackgroundColor = ColorUtil.RandomColorString(),
-                BorderWidth = 0,
-                HoverBackgroundColor = ColorUtil.RandomColorString(),
-                HoverBorderColor = ColorUtil.RandomColorString(),
-                HoverBorderWidth = 1,
-                BorderColor = "#ffffff"
-            };
+            Label = "All Flights",
+            BackgroundColor = ColorUtil.RandomColorString(),
+            BorderWidth = 0,
+            HoverBackgroundColor = ColorUtil.RandomColorString(),
+            HoverBorderColor = ColorUtil.RandomColorString(),
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff"
+        };
 
-            _barChartConfig.Data.Datasets.Clear();
-            datasetTotal.AddRange(data[0].TotalFlights(data, "all").Wrap());
+        _barChartConfig.Data.Datasets.Clear();
+        datasetTotal.AddRange(data[0].TotalFlights(data, "all").Wrap());
 
-            _barChartConfig.Data.Datasets.Add(datasetTotal);
-        }
-        else if(isDisplayed)
-        {
-            //change graphs if total is displayed and another button is clicked
-            isDisplayed = false;
-        }
-
-
+        _barChartConfig.Data.Datasets.Add(datasetTotal);
     }
 
     protected async override void OnInitialized()
