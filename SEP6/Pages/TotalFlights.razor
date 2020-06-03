@@ -21,9 +21,11 @@ else
     <button type="button" class="btn btn-primary" @onclick="Change">Switch Stacked Chart Model</button>
     <br>
     <div class="btn-group d-flex justify-content-center" role="group">
+        <button type="button" class="btn btn-secondary" >Frequency</button> <!--Non functional for now-->
+        <button type="button" class="btn btn-secondary" @onclick="ShowStackedFrequent">Frequency Stacked</button>
+        <button type="button" class="btn btn-secondary" @onclick="ShowStackedPercent">Percent Stacked</button>
+        <!--<button type="button" class="btn btn-secondary" @onclick="ShowJFKFlights">JFK Flights</button>-->
         <button type="button" class="btn btn-secondary" @onclick="ShowTotalFlights">Total Flights per Month</button>
-        <button type="button" class="btn btn-secondary" @onclick="ShowStackedFlights">@buttonName</button>
-        <button type="button" class="btn btn-secondary" @onclick="ShowJFKFlights">JFK Flights</button>
     </div>
     <br>
     <ChartJsBarChart @ref="_barChart"
@@ -84,106 +86,102 @@ else
             };
     }
 
-    public void ShowStackedFlights()
+    //Total number of flights from 3 Origins (Frequency Stacked)
+    public void ShowStackedFrequent()
     {
-        if (!change1)
+        var barSet1 = new BarDataset<DoubleWrapper>
         {
-            buttonName = "Total Flighs Frequency In Percentages";
-            var barSet1 = new BarDataset<DoubleWrapper>
-            {
-                Label = "JFK",
-                BackgroundColor = "#892514",
-                BorderWidth = 1,
-                HoverBackgroundColor = "#892514",
-                HoverBorderColor = "#892514",
-                HoverBorderWidth = 1,
-                BorderColor = "#ffffff",
-            };
-            var barSet2 = new BarDataset<DoubleWrapper>
-            {
-                Label = "EWR",
-                BackgroundColor = "#2cac19",
-                BorderWidth = 1,
-                HoverBackgroundColor = "#2cac19",
-                HoverBorderColor = "#2cac19",
-                HoverBorderWidth = 1,
-                BorderColor = "#ffffff",
-            };
-            var barSet3 = new BarDataset<DoubleWrapper>
-            {
-                Label = "LGA",
-                BackgroundColor = "#154591",
-                BorderWidth = 1,
-                HoverBackgroundColor = "#154591",
-                HoverBorderColor = "#154591",
-                HoverBorderWidth = 1,
-                BorderColor = "#ffffff",
-            };
-            _barChartConfig.Options.Title.Text = "Total Flighs Frequency Stacked In Numbers";
-            double[] countJFK = data[0].TotalFlights(data, "JFK");
-            double[] countEWR = data[0].TotalFlights(data, "EWR");
-            double[] countLGA = data[0].TotalFlights(data, "LGA");
-            _barChartConfig.Data.Datasets.Clear();
-            barSet1.AddRange(countJFK.Wrap());
-            barSet2.AddRange(countEWR.Wrap());
-            barSet3.AddRange(countLGA.Wrap());
-            _barChartConfig.Data.Datasets.Add(barSet1);
-            _barChartConfig.Data.Datasets.Add(barSet2);
-            _barChartConfig.Data.Datasets.Add(barSet3);
-            change1 = !change1;
-        }
-        else
+            Label = "JFK",
+            BackgroundColor = "#892514",
+            BorderWidth = 1,
+            HoverBackgroundColor = "#892514",
+            HoverBorderColor = "#892514",
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff",
+        };
+        var barSet2 = new BarDataset<DoubleWrapper>
         {
-            buttonName = "Total Flighs Frequency In Numbers";
-            var barSet1 = new BarDataset<DoubleWrapper>
-            {
-                Label = "JFK",
-                BackgroundColor = "#892514",
-                BorderWidth = 1,
-                HoverBackgroundColor = "#892514",
-                HoverBorderColor = "#892514",
-                HoverBorderWidth = 1,
-                BorderColor = "#ffffff",
-            };
-            var barSet2 = new BarDataset<DoubleWrapper>
-            {
-                Label = "EWR",
-                BackgroundColor = "#2cac19",
-                BorderWidth = 1,
-                HoverBackgroundColor = "#2cac19",
-                HoverBorderColor = "#2cac19",
-                HoverBorderWidth = 1,
-                BorderColor = "#ffffff",
-            };
-            var barSet3 = new BarDataset<DoubleWrapper>
-            {
-                Label = "LGA",
-                BackgroundColor = "#154591",
-                BorderWidth = 1,
-                HoverBackgroundColor = "#154591",
-                HoverBorderColor = "#154591",
-                HoverBorderWidth = 1,
-                BorderColor = "#ffffff",
-            };
-            _barChartConfig.Options.Title.Text = "Total Flighs Frequency Stacked In Percentages";
-            double[] countJFK = model.Percentage(data, "JFK");
-            double[] countEWR = model.Percentage(data, "EWR");
-            double[] countLGA = model.Percentage(data, "LGA");
-            _barChartConfig.Data.Datasets.Clear();
-            barSet1.AddRange(countJFK.Wrap());
-            barSet2.AddRange(countEWR.Wrap());
-            barSet3.AddRange(countLGA.Wrap());
-            _barChartConfig.Data.Datasets.Add(barSet1);
-            _barChartConfig.Data.Datasets.Add(barSet2);
-            _barChartConfig.Data.Datasets.Add(barSet3);
-            change1 = !change1;
-        }
+            Label = "EWR",
+            BackgroundColor = "#2cac19",
+            BorderWidth = 1,
+            HoverBackgroundColor = "#2cac19",
+            HoverBorderColor = "#2cac19",
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff",
+        };
+        var barSet3 = new BarDataset<DoubleWrapper>
+        {
+            Label = "LGA",
+            BackgroundColor = "#154591",
+            BorderWidth = 1,
+            HoverBackgroundColor = "#154591",
+            HoverBorderColor = "#154591",
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff",
+        };
+        _barChartConfig.Options.Title.Text = "Total Flighs Frequency Stacked In Numbers";
+        double[] countJFK = data[0].TotalFlights(data, "JFK");
+        double[] countEWR = data[0].TotalFlights(data, "EWR");
+        double[] countLGA = data[0].TotalFlights(data, "LGA");
+        _barChartConfig.Data.Datasets.Clear();
+        barSet1.AddRange(countJFK.Wrap());
+        barSet2.AddRange(countEWR.Wrap());
+        barSet3.AddRange(countLGA.Wrap());
+        _barChartConfig.Data.Datasets.Add(barSet1);
+        _barChartConfig.Data.Datasets.Add(barSet2);
+        _barChartConfig.Data.Datasets.Add(barSet3);
 
     }
 
+    //Total number of flights from 3 Origins (Percentage Stacked)
+    public void ShowStackedPercent()
+    {
+        var barSet1 = new BarDataset<DoubleWrapper>
+        {
+            Label = "JFK",
+            BackgroundColor = "#892514",
+            BorderWidth = 1,
+            HoverBackgroundColor = "#892514",
+            HoverBorderColor = "#892514",
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff",
+        };
+        var barSet2 = new BarDataset<DoubleWrapper>
+        {
+            Label = "EWR",
+            BackgroundColor = "#2cac19",
+            BorderWidth = 1,
+            HoverBackgroundColor = "#2cac19",
+            HoverBorderColor = "#2cac19",
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff",
+        };
+        var barSet3 = new BarDataset<DoubleWrapper>
+        {
+            Label = "LGA",
+            BackgroundColor = "#154591",
+            BorderWidth = 1,
+            HoverBackgroundColor = "#154591",
+            HoverBorderColor = "#154591",
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff",
+        };
+        _barChartConfig.Options.Title.Text = "Total Flighs Frequency Stacked In Percentages";
+        double[] countJFK = model.Percentage(data, "JFK");
+        double[] countEWR = model.Percentage(data, "EWR");
+        double[] countLGA = model.Percentage(data, "LGA");
+        _barChartConfig.Data.Datasets.Clear();
+        barSet1.AddRange(countJFK.Wrap());
+        barSet2.AddRange(countEWR.Wrap());
+        barSet3.AddRange(countLGA.Wrap());
+        _barChartConfig.Data.Datasets.Add(barSet1);
+        _barChartConfig.Data.Datasets.Add(barSet2);
+        _barChartConfig.Data.Datasets.Add(barSet3);
+    }
+
+    //Total number of flights per month
     public void ShowTotalFlights()
     {
-        //Total Flights
         var datasetTotal = new BarDataset<DoubleWrapper>
         {
             Label = "All Flights",
@@ -201,9 +199,9 @@ else
         _barChartConfig.Data.Datasets.Add(datasetTotal);
     }
 
+    /*
     public void ShowJFKFlights()
     {
-        //Total Flights
         var datasetTotal = new BarDataset<DoubleWrapper>
         {
             Label = "JFK Flights",
@@ -220,6 +218,7 @@ else
 
         _barChartConfig.Data.Datasets.Add(datasetTotal);
     }
+    */
 
     protected async override void OnInitialized()
     {
