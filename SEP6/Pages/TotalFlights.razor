@@ -12,6 +12,8 @@
 @using ChartJs.Blazor.ChartJS.BarChart.Axes
 
 @inject IModel model;
+<h3>Total Number of Flights</h3>
+<br>
 @if (data == null)
 {
     <p>Loading...</p>
@@ -34,6 +36,7 @@ else
                      Height="300" />
     <br>
     <br>
+    <h3>Departure and Arrival Delays</h3>
     <table class="table table-striped">
         <thead>
             <tr>

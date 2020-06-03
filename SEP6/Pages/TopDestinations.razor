@@ -13,6 +13,9 @@
 @using ChartJs.Blazor.ChartJS.BarChart.Axes
 
 @inject IModel model;
+
+<h3>Flights from the 3 Origins to the Top 10 Destinations</h3>
+<br>
 @if (data == null)
 {
     <p>Loading...</p>
@@ -23,7 +26,9 @@ else
                      Config="@_barChartConfig"
                      Width="600"
                      Height="300" />
-
+    <br>
+    <br>
+    <h3>Mean Airtime from Each Origin</h3>
     <table class="table table-striped">
 
         <thead>
@@ -50,7 +55,7 @@ else
 
                     <td>@flight.Dest</td>
 
-                    <td>@Math.Round(flight.Air_time,2) Minutes</td>
+                    <td>@Math.Round(flight.Air_time, 2) Minutes</td>
 
                 </tr>
             }
@@ -58,6 +63,8 @@ else
         </tbody>
 
     </table>
+    <br>
+    <br>
 }
 
 @code {
@@ -82,14 +89,14 @@ else
                 Scales = new BarScales
                 {
                     XAxes = new List<CartesianAxis>
-            {
+{
                         new BarCategoryAxis
                         {
                             BarThickness = BarThickness.Flex
                         }
                     },
                     YAxes = new List<CartesianAxis>
-            {
+{
                         new BarLinearCartesianAxis
                         {
                             Ticks = new LinearCartesianTicks
