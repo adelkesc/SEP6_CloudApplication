@@ -163,7 +163,7 @@ namespace DataAccessLibrary
             Console.WriteLine("Requesting MeanTempPerOriginAsync()");
             if (flightsMeanTempOrigins == null)
             {
-                string sql = "SELECT origin, month, day, (AVG(temp)-32)*5/9 AS Celcius FROM weather " +
+                string sql = "SELECT origin, month, day, (AVG(temp)-32)*5/9 AS Celsius FROM weather " +
                              "GROUP BY origin, month, day ORDER BY origin, month, day; ";
 
                 var data = await _db.LoadData<FlightModel, dynamic>(sql, new { });
