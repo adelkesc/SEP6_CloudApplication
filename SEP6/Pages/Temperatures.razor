@@ -13,8 +13,8 @@
 
 @inject IModel model;
 
-<h3>Number of Weather Observations per Origin</h3>
-
+<h3>Temperature Recordings per Origin</h3>
+<br>
 @if (data == null && data2 == null)
 {
     <p>Loading...</p>
@@ -22,16 +22,23 @@
 else
 {
 
-
+    <div class="btn-group d-flex justify-content-center" role="group">
+        <button type="button" class="btn btn-secondary" @onclick="ShowAll">Hourly Precise Temperature at Three Origins</button>
+        <button type="button" class="btn btn-secondary" @onclick="ShowJFK">Hourly Precise Temperature at JFK</button>
+        <button type="button" class="btn btn-secondary" @onclick="ShowAverageAll">Daily Average Temperatures at Three Origins</button>
+        <button type="button" class="btn btn-secondary" @onclick="ShowAverageJFK">Daily Average at JFK</button>
+    </div>
+    <br>
     <ChartJsBarChart @ref="_barChart"
                      Config="@_barChartConfig"
                      Width="600"
-                     Height="300" />
+                     Height="400" />
 
-    <div class="btn-group d-flex justify-content-center" role="group">
-        <button type="button" class="btn btn-secondary" @onclick="ShowAll">@buttonName</button>
-        <button type="button" class="btn btn-secondary" @onclick="ShowJFK">@buttonName1</button>
-    </div>
+    <br>
+    <br>
+
+    <h3>Number of Weather Observations per Origin</h3>
+
     <table class="table table-striped text-center">
         <thead>
             <tr>
@@ -54,73 +61,77 @@ else
             </tr>
         </tbody>
     </table>
-
+    <br>
+    <br>
 }
 
 @code {
     private List<FlightModel> data;
     private List<FlightModel> data2;
-    private string buttonName = "Mean Daily Temperature at Three Origins";
-    private string buttonName1 = "Mean Daily Temperature at JFK";
 
     private bool change = true;
     private bool change1 = true;
 
     private BarConfig _barChartConfig;
     private ChartJsBarChart _barChart;
-    private BarDataset<DoubleWrapper> _barDataSet11, _barDataSet12, _barDataSet13, _barDataSet111, _barDataSet222, _barDataSet21, _barDataSet22, _barDataSet23;
+    private BarDataset<DoubleWrapper> _barDataSet11, _barDataSet12, _barDataSet13,
+        _barDataSet111, _barDataSet222, _barDataSet21, _barDataSet22, _barDataSet23;
 
     private double[] countJFK, countLGA, countEWR;
     private double[] count1JFK, count2LGA, count3EWR;
 
+    //Show the temperature at JFK
     public void ShowJFK()
     {
         _barChartConfig.Data.Labels.Clear();
         _barChartConfig.Data.Datasets.Clear();
-        if (change1)
-        {
-            buttonName1 = "Mean Daily Temperature at JFK";
-            _barChartConfig.Options.Title.Text = "Hourly Precise Temperature at JFK";
-            _barChartConfig.Data.Labels.AddRange(data[0].GetDateFormat(data));
 
-            _barChartConfig.Data.Datasets.Add(_barDataSet111);
-        }
-        else
-        {
-            buttonName1 = "Precise Hourly Temperature at JFK";
-            _barChartConfig.Options.Title.Text = "Daily Mean Temperatures at JFK (Month/Day)";
-            _barChartConfig.Data.Labels.AddRange(data2[0].GetMeanDateFormat(data2));
+        _barChartConfig.Options.Title.Text = "Hourly Precise Temperature at JFK";
+        _barChartConfig.Data.Labels.AddRange(data[0].GetDateFormat(data));
 
-            _barChartConfig.Data.Datasets.Add(_barDataSet222);
-        }
-        change1 = !change1;
+        _barChartConfig.Data.Datasets.Add(_barDataSet111);
+
     }
 
+    //Show the daily average temperature at JFK
+    public void ShowAverageJFK()
+    {
+        _barChartConfig.Data.Labels.Clear();
+        _barChartConfig.Data.Datasets.Clear();
+
+        _barChartConfig.Options.Title.Text = "Daily Mean Temperatures at JFK (Month/Day)";
+        _barChartConfig.Data.Labels.AddRange(data2[0].GetMeanDateFormat(data2));
+
+        _barChartConfig.Data.Datasets.Add(_barDataSet222);
+    }
+
+    //Show All Temperature Attributes
     public void ShowAll()
     {
         _barChartConfig.Data.Labels.Clear();
         _barChartConfig.Data.Datasets.Clear();
-        if (change)
-        {
-            buttonName = "Precise Hourly Temperature at Three Origins";
-            _barChartConfig.Options.Title.Text = "Daily Mean Temperatures in 2013 (Month/Day)";
-            _barChartConfig.Data.Labels.AddRange(data2[0].GetMeanDateFormat(data2));
 
-            _barChartConfig.Data.Datasets.Add(_barDataSet21);
-            _barChartConfig.Data.Datasets.Add(_barDataSet22);
-            _barChartConfig.Data.Datasets.Add(_barDataSet23);
-        }
-        else
-        {
-            buttonName = "Mean Daily Temperature at Three Origins";
-            _barChartConfig.Options.Title.Text = "Precise Hourly Temperature at Three Origins 2013";
-            _barChartConfig.Data.Labels.AddRange(data[0].GetDateFormat(data));
+        _barChartConfig.Options.Title.Text = "Hourly Precise Temperatures at Three Origins 2013";
+        _barChartConfig.Data.Labels.AddRange(data[0].GetDateFormat(data));
 
-            _barChartConfig.Data.Datasets.Add(_barDataSet11);
-            _barChartConfig.Data.Datasets.Add(_barDataSet12);
-            _barChartConfig.Data.Datasets.Add(_barDataSet13);
-        }
-        change = !change;
+        _barChartConfig.Data.Datasets.Add(_barDataSet11);
+        _barChartConfig.Data.Datasets.Add(_barDataSet12);
+        _barChartConfig.Data.Datasets.Add(_barDataSet13);
+
+    }
+
+    //Show Daily Average Temperatures
+    public void ShowAverageAll()
+    {
+        _barChartConfig.Data.Labels.Clear();
+        _barChartConfig.Data.Datasets.Clear();
+
+        _barChartConfig.Options.Title.Text = "Daily Mean Temperatures in 2013 (Month/Day)";
+        _barChartConfig.Data.Labels.AddRange(data2[0].GetMeanDateFormat(data2));
+
+        _barChartConfig.Data.Datasets.Add(_barDataSet21);
+        _barChartConfig.Data.Datasets.Add(_barDataSet22);
+        _barChartConfig.Data.Datasets.Add(_barDataSet23);
     }
 
     protected override async Task OnInitializedAsync()
@@ -135,7 +146,7 @@ else
                 Title = new OptionsTitle
                 {
                     Display = true,
-                    Text = "Hourly Precise Temperatures In 2013"
+                    Text = "Hourly Precise Temperatures at Three Origins 2013"
                 },
                 Scales = new BarScales
                 {
