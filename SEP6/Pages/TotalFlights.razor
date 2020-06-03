@@ -19,17 +19,17 @@
 else
 {
     <button type="button" class="btn btn-primary" @onclick="Change">Switch Stacked Chart Model</button>
-    <ChartJsBarChart @ref="_barChart"
-                     Config="@_barChartConfig"
-                     Width="600"
-                     Height="300" />
-    <br>
     <br>
     <div class="btn-group d-flex justify-content-center" role="group">
         <button type="button" class="btn btn-secondary" @onclick="ShowTotalFlights">Total Flights per Month</button>
         <button type="button" class="btn btn-secondary" @onclick="ShowStackedFlights">@buttonName</button>
         <button type="button" class="btn btn-secondary" @onclick="ShowJFKFlights">JFK Flights</button>
     </div>
+    <br>
+    <ChartJsBarChart @ref="_barChart"
+                     Config="@_barChartConfig"
+                     Width="600"
+                     Height="300" />
     <br>
     <br>
     <table class="table table-striped">
@@ -51,6 +51,8 @@ else
             }
         </tbody>
     </table>
+    <br>
+    <br>
 }
 
 @code {
@@ -73,7 +75,7 @@ else
         this.StateHasChanged();
         change = !change;
         _barChartConfig.Options.Scales.XAxes = new List<CartesianAxis>
-    {
+{
                 new BarCategoryAxis
                 {
                     BarThickness = BarThickness.Flex,
@@ -237,7 +239,7 @@ else
                 Scales = new BarScales
                 {
                     XAxes = new List<CartesianAxis>
-            {
+{
                         new BarCategoryAxis
                         {
                             BarThickness = BarThickness.Flex,
@@ -245,7 +247,7 @@ else
                         }
                     },
                     YAxes = new List<CartesianAxis>
-        {
+{
                         new BarLinearCartesianAxis
                         {
                             Ticks = new LinearCartesianTicks

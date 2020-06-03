@@ -332,3 +332,5 @@ C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\obj\D
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\Delays.razor.g.cs
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\Planes.razor.g.cs
 C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\Temperatures.razor.g.cs
+C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\TemperaturesJFK.razor.g.cs
+C:\Users\adand\Documents\6th_semester_2020\SEP6\SEP6Project\ProjectVC\SEP6\obj\Debug\netcoreapp3.1\Razor\Pages\TemperaturesJFK.razor.g.cs
