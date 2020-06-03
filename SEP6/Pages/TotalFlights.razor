@@ -28,6 +28,7 @@ else
     <div class="btn-group d-flex justify-content-center" role="group">
         <button type="button" class="btn btn-secondary" @onclick="ShowTotalFlights">Total Flights per Month</button>
         <button type="button" class="btn btn-secondary" @onclick="ShowStackedFlights">@buttonName</button>
+        <button type="button" class="btn btn-secondary" @onclick="ShowJFKFlights">JFK Flights</button>
     </div>
     <br>
     <br>
@@ -174,6 +175,26 @@ else
 
         _barChartConfig.Data.Datasets.Clear();
         datasetTotal.AddRange(data[0].TotalFlights(data, "all").Wrap());
+
+        _barChartConfig.Data.Datasets.Add(datasetTotal);
+    }
+
+    public void ShowJFKFlights()
+    {
+        //Total Flights
+        var datasetTotal = new BarDataset<DoubleWrapper>
+        {
+            Label = "JFK Flights",
+            BackgroundColor = "#6682ea",
+            BorderWidth = 0,
+            HoverBackgroundColor = "#6682ea",
+            HoverBorderColor = "#6682ea",
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff"
+        };
+        double[] countJFK = data[0].TotalFlights(data, "JFK");
+        _barChartConfig.Data.Datasets.Clear();
+        datasetTotal.AddRange(countJFK.Wrap());
 
         _barChartConfig.Data.Datasets.Add(datasetTotal);
     }

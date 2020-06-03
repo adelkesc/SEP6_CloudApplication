@@ -21,7 +21,8 @@
 }
 else
 {
-    <button class="btn btn-primary" @onclick="Switch"> Switch </button>
+    <button class="btn btn-primary" @onclick="ShowAll"> All </button>
+    <button class="btn btn-primary" @onclick="ShowJFK"> JFK </button>
     <table class="table table-striped text-center">
         <thead>
             <tr>
@@ -45,10 +46,10 @@ else
         </tbody>
     </table>
 
-        <ChartJsBarChart @ref="_barChart"
-                         Config="@_barChartConfig"
-                         Width="600"
-                         Height="300" />
+    <ChartJsBarChart @ref="_barChart"
+                     Config="@_barChartConfig"
+                     Width="600"
+                     Height="300" />
 }
 
 @code {
@@ -56,41 +57,60 @@ else
     private List<FlightModel> data2;
 
     private bool change = true;
+    private bool change1 = true;
 
     private BarConfig _barChartConfig;
     private ChartJsBarChart _barChart;
-    private BarDataset<DoubleWrapper> _barDataSet11, _barDataSet12, _barDataSet13;
-
-    private BarConfig _barChartConfig2;
-    private ChartJsBarChart _barChart2;
-    private BarDataset<DoubleWrapper> _barDataSet21, _barDataSet22, _barDataSet23;
+    private BarDataset<DoubleWrapper> _barDataSet11, _barDataSet12, _barDataSet13, _barDataSet111, _barDataSet222, _barDataSet21, _barDataSet22, _barDataSet23;
 
     private double[] countJFK, countLGA, countEWR;
     private double[] count1JFK, count2LGA, count3EWR;
 
-    public Task Switch()
+    public void ShowJFK()
     {
-
-        if (change)
+        _barChartConfig.Data.Labels.Clear();
+        _barChartConfig.Data.Datasets.Clear();
+        if (change1)
         {
-            _barChartConfig.Data.Labels.Clear();
-            _barChartConfig.Options.Title.Text = "Daily Mean Temperatures In 2013 (Month/Day)";
-            _barChartConfig.Data.Labels.AddRange(data2[0].GetMeanDateFormat(data2));
-            _barChartConfig.Data.Datasets[0] = _barDataSet11;
-            _barChartConfig.Data.Datasets[1] = _barDataSet12;
-            _barChartConfig.Data.Datasets[2] = _barDataSet13;
+            _barChartConfig.Options.Title.Text = "Hourly Precise Temperature At JFK";
+            _barChartConfig.Data.Labels.AddRange(data[0].GetDateFormat(data));
+
+            _barChartConfig.Data.Datasets.Add(_barDataSet111);
         }
         else
         {
-            _barChartConfig.Data.Labels.Clear();
+            _barChartConfig.Options.Title.Text = "Daily Mean Temperatures At JFK (Month/Day)";
+            _barChartConfig.Data.Labels.AddRange(data2[0].GetMeanDateFormat(data2));
+
+            _barChartConfig.Data.Datasets.Add(_barDataSet222);
+        }
+        change1 = !change1;
+    }
+
+    public void ShowAll()
+    {
+        _barChartConfig.Data.Labels.Clear();
+        _barChartConfig.Data.Datasets.Clear();
+        if (change)
+        {
+
+            _barChartConfig.Options.Title.Text = "Daily Mean Temperatures In 2013 (Month/Day)";
+            _barChartConfig.Data.Labels.AddRange(data2[0].GetMeanDateFormat(data2));
+
+            _barChartConfig.Data.Datasets.Add(_barDataSet21);
+            _barChartConfig.Data.Datasets.Add(_barDataSet22);
+            _barChartConfig.Data.Datasets.Add(_barDataSet23);
+        }
+        else
+        {
             _barChartConfig.Options.Title.Text = "Hourly Precise Temperatures In 2013";
             _barChartConfig.Data.Labels.AddRange(data[0].GetDateFormat(data));
-            _barChartConfig.Data.Datasets[0] = _barDataSet21;
-            _barChartConfig.Data.Datasets[1] = _barDataSet22;
-            _barChartConfig.Data.Datasets[2] = _barDataSet23;
+
+            _barChartConfig.Data.Datasets.Add(_barDataSet11);
+            _barChartConfig.Data.Datasets.Add(_barDataSet12);
+            _barChartConfig.Data.Datasets.Add(_barDataSet13);
         }
         change = !change;
-        return Task.CompletedTask;
     }
 
     protected override async Task OnInitializedAsync()
@@ -191,6 +211,27 @@ else
             HoverBorderWidth = 1,
             BorderColor = "#ffffff"
         };
+        _barDataSet111 = new BarDataset<DoubleWrapper>
+        {
+            Label = "Temperature in Celsius",
+            BackgroundColor = "#96ded1",
+            BorderWidth = 0,
+            HoverBackgroundColor = "#96ded1",
+            HoverBorderColor = "#96ded1",
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff"
+        };
+        _barDataSet222 = new BarDataset<DoubleWrapper>
+        {
+            Label = "Temperature in Celsius",
+            BackgroundColor = "#96ded1",
+            BorderWidth = 0,
+            HoverBackgroundColor = "#96ded1",
+            HoverBorderColor = "#96ded1",
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff"
+        };
+
 
         if (data != null)
         {
@@ -204,6 +245,8 @@ else
             _barChartConfig.Data.Datasets.Add(_barDataSet11);
             _barChartConfig.Data.Datasets.Add(_barDataSet12);
             _barChartConfig.Data.Datasets.Add(_barDataSet13);
+
+            _barDataSet111.AddRange(countJFK.Wrap());
         }
 
         if (data2 != null)
@@ -211,9 +254,11 @@ else
             count1JFK = (data2[0].Temperatures(data2, "JFK"));
             count2LGA = (data2[0].Temperatures(data2, "LGA"));
             count3EWR = (data2[0].Temperatures(data2, "EWR"));
-            _barDataSet21.AddRange(countJFK.Wrap());
-            _barDataSet22.AddRange(countLGA.Wrap());
-            _barDataSet23.AddRange(countEWR.Wrap());
+            _barDataSet21.AddRange(count1JFK.Wrap());
+            _barDataSet22.AddRange(count2LGA.Wrap());
+            _barDataSet23.AddRange(count3EWR.Wrap());
+
+            _barDataSet222.AddRange(count1JFK.Wrap());
         }
         this.StateHasChanged();
     }
