@@ -32,6 +32,25 @@ else
     </div>
     <br>
     <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-center">Origin</th>
+                <th class="text-center">Average Arrival Delay</th>
+                <th class="text-center">Average Departure Delay</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in data2)
+            {
+                <tr>
+                    <td class="text-center">@flight.Origin</td>
+                    <td class="text-center">@Math.Round(flight.Avg_arr, 2) Minutes</td>
+                    <td class="text-center">@Math.Round(flight.Avg_dep, 2) Minutes</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 
 @code {
@@ -40,6 +59,7 @@ else
     private BarDataset<DoubleWrapper> _barDataSet;
     private List<FlightModel> data;
     private List<FlightModel> data1;
+    private List<FlightModel> data2;
     private bool change = true;
     private bool change1 = true;
     private string buttonName = "Total Flighs Frequency In Percentages";
@@ -53,7 +73,7 @@ else
         this.StateHasChanged();
         change = !change;
         _barChartConfig.Options.Scales.XAxes = new List<CartesianAxis>
-        {
+    {
                 new BarCategoryAxis
                 {
                     BarThickness = BarThickness.Flex,
@@ -203,6 +223,7 @@ else
     {
         data = await model.NoFlightsPerMonthPerOriginAsync();
         data1 = await model.TotalFlightsMonthAsync();
+        data2 = await model.MeanDelayPerOriginAsync();
 
         _barChartConfig = new BarConfig
         {
@@ -216,7 +237,7 @@ else
                 Scales = new BarScales
                 {
                     XAxes = new List<CartesianAxis>
-                {
+            {
                         new BarCategoryAxis
                         {
                             BarThickness = BarThickness.Flex,
@@ -224,7 +245,7 @@ else
                         }
                     },
                     YAxes = new List<CartesianAxis>
-            {
+        {
                         new BarLinearCartesianAxis
                         {
                             Ticks = new LinearCartesianTicks

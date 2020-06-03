@@ -21,8 +21,17 @@
 }
 else
 {
-    <button class="btn btn-primary" @onclick="ShowAll"> All </button>
-    <button class="btn btn-primary" @onclick="ShowJFK"> JFK </button>
+
+
+    <ChartJsBarChart @ref="_barChart"
+                     Config="@_barChartConfig"
+                     Width="600"
+                     Height="300" />
+
+    <div class="btn-group d-flex justify-content-center" role="group">
+        <button type="button" class="btn btn-secondary" @onclick="ShowAll">@buttonName</button>
+        <button type="button" class="btn btn-secondary" @onclick="ShowJFK">@buttonName1</button>
+    </div>
     <table class="table table-striped text-center">
         <thead>
             <tr>
@@ -46,15 +55,13 @@ else
         </tbody>
     </table>
 
-    <ChartJsBarChart @ref="_barChart"
-                     Config="@_barChartConfig"
-                     Width="600"
-                     Height="300" />
 }
 
 @code {
     private List<FlightModel> data;
     private List<FlightModel> data2;
+    private string buttonName = "Mean Daily Temperature at Three Origins";
+    private string buttonName1 = "Mean Daily Temperature at JFK";
 
     private bool change = true;
     private bool change1 = true;
@@ -72,14 +79,16 @@ else
         _barChartConfig.Data.Datasets.Clear();
         if (change1)
         {
-            _barChartConfig.Options.Title.Text = "Hourly Precise Temperature At JFK";
+            buttonName1 = "Mean Daily Temperature at JFK";
+            _barChartConfig.Options.Title.Text = "Hourly Precise Temperature at JFK";
             _barChartConfig.Data.Labels.AddRange(data[0].GetDateFormat(data));
 
             _barChartConfig.Data.Datasets.Add(_barDataSet111);
         }
         else
         {
-            _barChartConfig.Options.Title.Text = "Daily Mean Temperatures At JFK (Month/Day)";
+            buttonName1 = "Precise Hourly Temperature at JFK";
+            _barChartConfig.Options.Title.Text = "Daily Mean Temperatures at JFK (Month/Day)";
             _barChartConfig.Data.Labels.AddRange(data2[0].GetMeanDateFormat(data2));
 
             _barChartConfig.Data.Datasets.Add(_barDataSet222);
@@ -93,8 +102,8 @@ else
         _barChartConfig.Data.Datasets.Clear();
         if (change)
         {
-
-            _barChartConfig.Options.Title.Text = "Daily Mean Temperatures In 2013 (Month/Day)";
+            buttonName = "Precise Hourly Temperature at Three Origins";
+            _barChartConfig.Options.Title.Text = "Daily Mean Temperatures in 2013 (Month/Day)";
             _barChartConfig.Data.Labels.AddRange(data2[0].GetMeanDateFormat(data2));
 
             _barChartConfig.Data.Datasets.Add(_barDataSet21);
@@ -103,7 +112,8 @@ else
         }
         else
         {
-            _barChartConfig.Options.Title.Text = "Hourly Precise Temperatures In 2013";
+            buttonName = "Mean Daily Temperature at Three Origins";
+            _barChartConfig.Options.Title.Text = "Precise Hourly Temperature at Three Origins 2013";
             _barChartConfig.Data.Labels.AddRange(data[0].GetDateFormat(data));
 
             _barChartConfig.Data.Datasets.Add(_barDataSet11);
