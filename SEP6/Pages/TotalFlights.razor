@@ -28,9 +28,29 @@ else
     <div class="btn-group d-flex justify-content-center" role="group">
         <button type="button" class="btn btn-secondary" @onclick="ShowTotalFlights">Total Flights per Month</button>
         <button type="button" class="btn btn-secondary" @onclick="ShowStackedFlights">@buttonName</button>
+        <button type="button" class="btn btn-secondary" @onclick="ShowJFKFlights">JFK Flights</button>
     </div>
     <br>
     <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="text-center">Origin</th>
+                <th class="text-center">Average Arrival Delay</th>
+                <th class="text-center">Average Departure Delay</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in data2)
+            {
+                <tr>
+                    <td class="text-center">@flight.Origin</td>
+                    <td class="text-center">@Math.Round(flight.Avg_arr, 2) Minutes</td>
+                    <td class="text-center">@Math.Round(flight.Avg_dep, 2) Minutes</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 
 @code {
@@ -39,6 +59,7 @@ else
     private BarDataset<DoubleWrapper> _barDataSet;
     private List<FlightModel> data;
     private List<FlightModel> data1;
+    private List<FlightModel> data2;
     private bool change = true;
     private bool change1 = true;
     private string buttonName = "Total Flighs Frequency In Percentages";
@@ -52,7 +73,7 @@ else
         this.StateHasChanged();
         change = !change;
         _barChartConfig.Options.Scales.XAxes = new List<CartesianAxis>
-        {
+    {
                 new BarCategoryAxis
                 {
                     BarThickness = BarThickness.Flex,
@@ -178,10 +199,31 @@ else
         _barChartConfig.Data.Datasets.Add(datasetTotal);
     }
 
+    public void ShowJFKFlights()
+    {
+        //Total Flights
+        var datasetTotal = new BarDataset<DoubleWrapper>
+        {
+            Label = "JFK Flights",
+            BackgroundColor = "#6682ea",
+            BorderWidth = 0,
+            HoverBackgroundColor = "#6682ea",
+            HoverBorderColor = "#6682ea",
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff"
+        };
+        double[] countJFK = data[0].TotalFlights(data, "JFK");
+        _barChartConfig.Data.Datasets.Clear();
+        datasetTotal.AddRange(countJFK.Wrap());
+
+        _barChartConfig.Data.Datasets.Add(datasetTotal);
+    }
+
     protected async override void OnInitialized()
     {
         data = await model.NoFlightsPerMonthPerOriginAsync();
         data1 = await model.TotalFlightsMonthAsync();
+        data2 = await model.MeanDelayPerOriginAsync();
 
         _barChartConfig = new BarConfig
         {
@@ -195,7 +237,7 @@ else
                 Scales = new BarScales
                 {
                     XAxes = new List<CartesianAxis>
-                {
+            {
                         new BarCategoryAxis
                         {
                             BarThickness = BarThickness.Flex,
@@ -203,7 +245,7 @@ else
                         }
                     },
                     YAxes = new List<CartesianAxis>
-            {
+        {
                         new BarLinearCartesianAxis
                         {
                             Ticks = new LinearCartesianTicks
