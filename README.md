@@ -1,5 +1,7 @@
 # SEP6 Project 
 Collaborators: Dominika Kubicz, Mihail Kanchev, Amahdya Delkescamp
+
+Link to Project Application: https://sep-6-277011.ew.r.appspot.com/
 ## **Purpose** 
 The purpose is to examine the concept of Cloud Computing and the strategic considerations for using Cloud Computing.  
  
