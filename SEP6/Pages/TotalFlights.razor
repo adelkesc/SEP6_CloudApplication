@@ -20,14 +20,13 @@
 }
 else
 {
-    <button type="button" class="btn btn-primary" @onclick="Change">Switch Stacked Chart Model</button>
-    <br>
+    <!--<button type="button" class="btn btn-primary" @onclick="Change">Switch Stacked Chart Model</button>-->
     <div class="btn-group d-flex justify-content-center" role="group">
-        <button type="button" class="btn btn-secondary">Frequency</button>
+        <button type="button" class="btn btn-secondary" @onclick="ShowFrequencyBar">Frequency</button>
         <button type="button" class="btn btn-secondary" @onclick="ShowStackedFrequent">Frequency Stacked</button>
-        <button type="button" class="btn btn-secondary" @onclick="Percent">Percent</button>
+        <!--<button type="button" class="btn btn-secondary" @onclick="Percent">Percent</button>-->
         <button type="button" class="btn btn-secondary" @onclick="ShowStackedPercent">Percent Stacked</button>
-        <button type="button" class="btn btn-secondary" @onclick="ShowJFKFlights">JFK Flights</button>
+        <!--<button type="button" class="btn btn-secondary" @onclick="ShowJFKFlights">JFK Flights</button>-->
         <button type="button" class="btn btn-secondary" @onclick="ShowTotalFlights">Total Flights per Month</button>
     </div>
     <br>
@@ -74,7 +73,7 @@ else
 
     private BarDataset<DoubleWrapper> _barDataSetTotal;
 
-
+    /*
     public void Change()
     {
 
@@ -88,6 +87,63 @@ else
                     Stacked = change
                 }
             };
+    }
+    */
+
+    public void ShowFrequencyBar()
+    {
+        var barSet1 = new BarDataset<DoubleWrapper>
+        {
+            Label = "JFK",
+            BackgroundColor = "#892514",
+            BorderWidth = 1,
+            HoverBackgroundColor = "#892514",
+            HoverBorderColor = "#892514",
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff",
+        };
+
+        var barSet2 = new BarDataset<DoubleWrapper>
+        {
+            Label = "EWR",
+            BackgroundColor = "#2cac19",
+            BorderWidth = 1,
+            HoverBackgroundColor = "#2cac19",
+            HoverBorderColor = "#2cac19",
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff",
+        };
+
+        var barSet3 = new BarDataset<DoubleWrapper>
+        {
+            Label = "LGA",
+            BackgroundColor = "#154591",
+            BorderWidth = 1,
+            HoverBackgroundColor = "#154591",
+            HoverBorderColor = "#154591",
+            HoverBorderWidth = 1,
+            BorderColor = "#ffffff",
+        };
+
+        _barChartConfig.Options.Title.Text = "Total Flighs Frequency In Numbers";
+        double[] countJFK = data[0].TotalFlights(data, "JFK");
+        double[] countEWR = data[0].TotalFlights(data, "EWR");
+        double[] countLGA = data[0].TotalFlights(data, "LGA");
+        _barChartConfig.Data.Datasets.Clear();
+        barSet1.AddRange(countJFK.Wrap());
+        barSet2.AddRange(countEWR.Wrap());
+        barSet3.AddRange(countLGA.Wrap());
+        _barChartConfig.Data.Datasets.Add(barSet1);
+        _barChartConfig.Data.Datasets.Add(barSet2);
+        _barChartConfig.Data.Datasets.Add(barSet3);
+        _barChartConfig.Options.Scales.XAxes = new List<CartesianAxis>
+        {
+                new BarCategoryAxis
+                {
+                    BarThickness = BarThickness.Flex,
+                    Stacked = false
+                }
+        };
     }
 
     //Total number of flights from 3 Origins (Frequency Stacked)
@@ -135,13 +191,13 @@ else
         _barChartConfig.Data.Datasets.Add(barSet2);
         _barChartConfig.Data.Datasets.Add(barSet3);
         _barChartConfig.Options.Scales.XAxes = new List<CartesianAxis>
-{
+        {
                 new BarCategoryAxis
                 {
                     BarThickness = BarThickness.Flex,
                     Stacked = true
                 }
-            };
+        };
 
     }
 
@@ -190,7 +246,7 @@ else
         _barChartConfig.Data.Datasets.Add(barSet2);
         _barChartConfig.Data.Datasets.Add(barSet3);
         _barChartConfig.Options.Scales.XAxes = new List<CartesianAxis>
-        {
+    {
                 new BarCategoryAxis
                 {
                     BarThickness = BarThickness.Flex,
@@ -198,7 +254,9 @@ else
                 }
         };
     }
+    /*
     // Show unstacked percent
+
     public void Percent()
     {
         var barSet1 = new BarDataset<DoubleWrapper>
@@ -251,6 +309,7 @@ else
                 }
         };
     }
+    */
 
     //Total number of flights per month
     public void ShowTotalFlights()
@@ -272,7 +331,7 @@ else
         _barChartConfig.Data.Datasets.Add(datasetTotal);
 
         _barChartConfig.Options.Scales.XAxes = new List<CartesianAxis>
-        {
+    {
                 new BarCategoryAxis
                 {
                     BarThickness = BarThickness.Flex,
@@ -281,7 +340,7 @@ else
         };
     }
 
-
+    /*
     public void ShowJFKFlights()
     {
         var datasetTotal = new BarDataset<DoubleWrapper>
@@ -309,7 +368,7 @@ else
                 }
         };
     }
-
+    */
 
     protected async override void OnInitialized()
     {
@@ -324,7 +383,7 @@ else
                 Title = new OptionsTitle
                 {
                     Display = true,
-                    Text = "Total Flighs Frequency Stacked In Numbers"
+                    Text = "Total Flighs Frequency In Numbers"
                 },
                 Scales = new BarScales
                 {
