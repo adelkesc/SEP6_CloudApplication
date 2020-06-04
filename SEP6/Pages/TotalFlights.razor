@@ -20,13 +20,11 @@
 }
 else
 {
-    <!--<button type="button" class="btn btn-primary" @onclick="Change">Switch Stacked Chart Model</button>-->
     <div class="btn-group d-flex justify-content-center" role="group">
         <button type="button" class="btn btn-secondary" @onclick="ShowFrequencyBar">Frequency</button>
         <button type="button" class="btn btn-secondary" @onclick="ShowStackedFrequent">Frequency Stacked</button>
-        <!--<button type="button" class="btn btn-secondary" @onclick="Percent">Percent</button>-->
+        <button type="button" class="btn btn-secondary" @onclick="Percent">Percent</button>
         <button type="button" class="btn btn-secondary" @onclick="ShowStackedPercent">Percent Stacked</button>
-        <!--<button type="button" class="btn btn-secondary" @onclick="ShowJFKFlights">JFK Flights</button>-->
         <button type="button" class="btn btn-secondary" @onclick="ShowTotalFlights">Total Flights per Month</button>
     </div>
     <br>
@@ -69,26 +67,9 @@ else
     private List<FlightModel> data2;
     private bool change = true;
     private bool change1 = true;
-    private string buttonName = "Total Flighs Frequency In Percentages";
+    string[] months;
 
     private BarDataset<DoubleWrapper> _barDataSetTotal;
-
-    /*
-    public void Change()
-    {
-
-        this.StateHasChanged();
-        change = !change;
-        _barChartConfig.Options.Scales.XAxes = new List<CartesianAxis>
-{
-                new BarCategoryAxis
-                {
-                    BarThickness = BarThickness.Flex,
-                    Stacked = change
-                }
-            };
-    }
-    */
 
     public void ShowFrequencyBar()
     {
@@ -254,7 +235,7 @@ else
                 }
         };
     }
-    /*
+
     // Show unstacked percent
 
     public void Percent()
@@ -309,7 +290,6 @@ else
                 }
         };
     }
-    */
 
     //Total number of flights per month
     public void ShowTotalFlights()
@@ -339,36 +319,6 @@ else
                 }
         };
     }
-
-    /*
-    public void ShowJFKFlights()
-    {
-        var datasetTotal = new BarDataset<DoubleWrapper>
-        {
-            Label = "JFK Flights",
-            BackgroundColor = "#6682ea",
-            BorderWidth = 0,
-            HoverBackgroundColor = "#6682ea",
-            HoverBorderColor = "#6682ea",
-            HoverBorderWidth = 1,
-            BorderColor = "#ffffff"
-        };
-
-        _barChartConfig.Data.Datasets.Clear();
-        double[] countJFK = data[0].TotalFlights(data, "JFK");
-        datasetTotal.AddRange(countJFK.Wrap());
-
-        _barChartConfig.Data.Datasets.Add(datasetTotal);
-        _barChartConfig.Options.Scales.XAxes = new List<CartesianAxis>
-        {
-                new BarCategoryAxis
-                {
-                    BarThickness = BarThickness.Flex,
-                    Stacked = false
-                }
-        };
-    }
-    */
 
     protected async override void OnInitialized()
     {
@@ -410,9 +360,8 @@ else
         };
 
 
-        string[] months;
-        months = new[] { "January", "February", "March", "April", "May", "June", "July", "August"
-        , "September", "October", "November", "December"};
+
+        months = model.MonthNames();
         _barChartConfig.Data.Labels.AddRange(months);
 
 
